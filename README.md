@@ -2,7 +2,9 @@
 
 > **Course:** CSE326 – Internet & Web Programming  
 > **Academic Year:** 2026  
-> **Project Type:** Frontend Web Application (Client-Side)
+> **Project Type:** Frontend Web Application (Client-Side)  
+> **🌐 Live Demo:** [https://community-emergency-directory.vercel.app](https://community-emergency-directory.vercel.app)  
+> **🔐 Admin PIN:** `1234`
 
 ---
 
