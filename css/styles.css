@@ -14,7 +14,8 @@
 
 /* Ensure the Leaflet map container has explicit dimensions */
 #map {
-  height: 380px;
+  height: 420px;
+  min-height: 380px;
   width: 100%;
   border-radius: 8px;
   z-index: 1;

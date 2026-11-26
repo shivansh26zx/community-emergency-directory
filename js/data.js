@@ -49,10 +49,19 @@ function initializeData() {
   }
 }
 
-// Retrieve resources array from browser storage
+// Retrieve resources array from browser storage safely
 function getResources() {
   initializeData();
-  return JSON.parse(localStorage.getItem("emergencyResources"));
+  try {
+    const parsed = JSON.parse(localStorage.getItem("emergencyResources"));
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+  } catch (e) {
+    console.warn("Storage reset to default emergency data:", e);
+  }
+  localStorage.setItem("emergencyResources", JSON.stringify(initialResources));
+  return initialResources;
 }
 
 // Persist modified array back to localStorage
