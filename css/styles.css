@@ -1,9 +1,2 @@
-/* Import the Unit 1-3 master syllabus stylesheet */
+/* Import style.css */
 @import url("style.css");
-
-/* Legacy helper rules if needed */
-#map {
-  height: 380px;
-  width: 100%;
-  border-radius: 8px;
-}

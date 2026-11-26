@@ -1,80 +1,87 @@
 /* ==========================================================================
-   CSE326 Unit #3: Simple CSS Stylesheet
+   CSE326 Unit #3: Simple CSS Stylesheet (100% Pure CSS - No JavaScript)
    Project: Community Emergency Resource Directory
    Student: Shivansh Sharma (Reg: 12611232, Roll: 48, Section: K4P26XP)
    ========================================================================== */
 
-/* 1. Universal Selector (*) */
+/* Universal Selector */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. Element Selectors */
+/* Body Styling */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6f9;
+  background-color: #f7f9fc;
   color: #333333;
   line-height: 1.6;
 }
 
-/* 3. Grouping Selector (h1, h2, h3) */
-h1, h2, h3 {
-  color: #b30000;
-  margin-bottom: 10px;
-}
-
-/* 4. ID Selectors (#) */
-#header {
+/* Header */
+header {
   background-color: #b30000;
   color: white;
   text-align: center;
   padding: 20px;
 }
 
-#header h1 {
+header h1 {
   color: white;
-  text-shadow: 2px 2px 4px #000000; /* Text Shadow */
-  letter-spacing: 1px;               /* Letter Spacing */
+  text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 5px;
 }
 
-#nav {
+/* Navigation Bar */
+nav {
   background-color: #222222;
   text-align: center;
-  padding: 12px;
+  padding: 10px;
 }
 
-/* 5. Pseudo-Class (:hover) on Links */
-#nav a {
+nav a {
   color: white;
-  text-decoration: none;             /* Remove Underline */
-  margin: 0 15px;
+  text-decoration: none;
+  margin: 0 12px;
   font-weight: bold;
 }
 
-#nav a:hover {
+nav a:hover {
   color: #ffcc00;
-  text-decoration: underline;        /* Add Underline on Hover */
+  text-decoration: underline;
 }
 
-/* 6. Class Selectors (.) */
-.container {
-  width: 85%;
-  max-width: 900px;
+/* Main Container */
+main {
+  width: 80%;
+  max-width: 850px;
   margin: 20px auto;
-  background-color: #ffffff;
+  background-color: white;
   padding: 25px;
   border: 1px solid #dddddd;
 }
 
-.section {
-  margin-bottom: 30px;
+/* Sections */
+section {
+  margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eeeeee;
 }
 
-/* Span Highlighter */
+/* Headings */
+h1, h2, h3 {
+  color: #b30000;
+  margin-bottom: 8px;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+/* Highlight Span */
 .highlight {
   background-color: yellow;
   color: #b30000;
@@ -82,7 +89,7 @@ h1, h2, h3 {
   padding: 2px 5px;
 }
 
-/* 7. Table Styling with Colspan & Rowspan */
+/* Table Styling with Colspan & Rowspan */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -90,7 +97,7 @@ table {
 }
 
 th, td {
-  border: 1px solid #444444;
+  border: 1px solid #333333;
   padding: 10px;
   text-align: center;
 }
@@ -100,16 +107,15 @@ th {
   color: white;
 }
 
-/* Table Row Hover */
 tr:hover {
   background-color: #ffe6e6;
 }
 
-/* 8. Attribute Selectors for Form */
+/* Form Styling */
 form {
   background-color: #fafafa;
   border: 1px solid #cccccc;
-  padding: 20px;
+  padding: 15px;
 }
 
 input[type="text"],
@@ -118,18 +124,18 @@ select,
 textarea {
   width: 100%;
   padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #999999;
+  margin-top: 4px;
+  border: 1px solid #888888;
 }
 
 input[type="submit"] {
   background-color: #b30000;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   font-weight: bold;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 input[type="submit"]:hover {
@@ -139,20 +145,20 @@ input[type="submit"]:hover {
 input[type="reset"] {
   background-color: #666666;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   cursor: pointer;
 }
 
-/* 9. Aside Box */
+/* Aside Box */
 aside {
   background-color: #fff2f2;
-  border-left: 5px solid #b30000;
-  padding: 15px;
-  margin: 20px 0;
+  border-left: 4px solid #b30000;
+  padding: 12px 16px;
+  margin-top: 20px;
 }
 
-/* 10. Footer */
+/* Footer */
 footer {
   background-color: #222222;
   color: white;
