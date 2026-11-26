@@ -1,390 +1,166 @@
 /* ==========================================================================
-   CSE326 INTERNET PROGRAMMING - Unit #3 Cascading Style Sheets (CSS)
+   CSE326 Unit #3: Simple CSS Stylesheet
    Project: Community Emergency Resource Directory
-   Student: Shivansh Sharma | Reg No: 12611232 | Roll No: 48 | Section: K4P26XP
+   Student: Shivansh Sharma (Reg: 12611232, Roll: 48, Section: K4P26XP)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   1. UNIVERSAL SELECTOR (*)
-   Selects all HTML elements on the page to reset margins and set box-sizing
-   -------------------------------------------------------------------------- */
+/* 1. Universal Selector (*) */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* --------------------------------------------------------------------------
-   2. ELEMENT SELECTOR
-   Selects elements based on tag name
-   -------------------------------------------------------------------------- */
+/* 2. Element Selectors */
 body {
-  font-family: Arial, Helvetica, sans-serif; /* Fallback Font Stack */
-  font-size: 16px;
-  line-height: 1.6;                         /* Line Spacing */
-  color: #333333;                           /* Text Color */
-  background-color: #f7f9fc;                /* Background Color */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
+  color: #333333;
+  line-height: 1.6;
 }
 
-/* --------------------------------------------------------------------------
-   3. GROUPING SELECTOR
-   Selects multiple elements sharing the same style definitions
-   -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
-  font-family: Georgia, "Times New Roman", serif; /* Serif Generic Font Family */
-  color: #990000;                                 /* Deep Emergency Red */
-  margin-bottom: 12px;
+/* 3. Grouping Selector (h1, h2, h3) */
+h1, h2, h3 {
+  color: #b30000;
+  margin-bottom: 10px;
 }
 
-/* --------------------------------------------------------------------------
-   4. ID SELECTORS (#id)
-   Selects single unique elements by their HTML id attribute
-   -------------------------------------------------------------------------- */
-#main-header {
+/* 4. ID Selectors (#) */
+#header {
   background-color: #b30000;
-  color: #ffffff;
-  padding: 25px 20px;
-  text-align: center; /* Text Alignment: Center */
-  border-bottom: 4px solid #660000;
-}
-
-#site-title {
-  font-size: 2.4em;                      /* Relative Font Size (em) */
-  font-weight: bold;
-  letter-spacing: 2px;                   /* Letter Spacing */
-  text-transform: uppercase;             /* Text Transformation: Uppercase */
-  text-shadow: 2px 2px 5px #000000;      /* Text Shadow: H-shadow, V-shadow, Blur, Color */
-  margin-bottom: 6px;
-}
-
-#site-subtitle {
-  font-size: 1.1em;
-  font-style: italic;                    /* Font Style: Italic */
-  color: #ffe6e6;
-  letter-spacing: 1px;
-}
-
-#navbar {
-  background-color: #222222;
-  padding: 12px 20px;
+  color: white;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 20px;
 }
 
-#emergency-table {
+#header h1 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000; /* Text Shadow */
+  letter-spacing: 1px;               /* Letter Spacing */
+}
+
+#nav {
+  background-color: #222222;
+  text-align: center;
+  padding: 12px;
+}
+
+/* 5. Pseudo-Class (:hover) on Links */
+#nav a {
+  color: white;
+  text-decoration: none;             /* Remove Underline */
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+#nav a:hover {
+  color: #ffcc00;
+  text-decoration: underline;        /* Add Underline on Hover */
+}
+
+/* 6. Class Selectors (.) */
+.container {
+  width: 85%;
+  max-width: 900px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 25px;
+  border: 1px solid #dddddd;
+}
+
+.section {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Span Highlighter */
+.highlight {
+  background-color: yellow;
+  color: #b30000;
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+/* 7. Table Styling with Colspan & Rowspan */
+table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  background-color: #ffffff;
-}
-
-#registration-form {
-  background-color: #ffffff;
-  border: 2px solid #dddddd;
-  border-radius: 8px;
-  padding: 25px;
-  margin-top: 20px;
-}
-
-/* --------------------------------------------------------------------------
-   5. CLASS SELECTORS (.class)
-   Selects elements with a specific class attribute
-   -------------------------------------------------------------------------- */
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 10px;
-}
-
-.section-box {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 24px;
-  margin-bottom: 25px;
-}
-
-.section-heading {
-  border-bottom: 2px solid #b30000;
-  padding-bottom: 8px;
-  margin-bottom: 18px;
-  text-transform: capitalize; /* Text Transformation: Capitalize */
-}
-
-/* Class Selector Variation: Specific Element with Class */
-p.lead-text {
-  font-size: 1.15em;
-  font-weight: 600;
-  color: #444444;
-  margin-bottom: 15px;
-  text-indent: 30px; /* Text Indentation */
-}
-
-p.alert-text {
-  background-color: #fff3cd;
-  color: #856404;
-  border-left: 5px solid #ffeeba;
-  padding: 12px 16px;
   margin: 15px 0;
-  font-weight: bold;
 }
 
-/* Class Selector Variation: Multiple Classes (.badge.urgent) */
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.85em;
-  font-weight: bold;
+th, td {
+  border: 1px solid #444444;
+  padding: 10px;
+  text-align: center;
 }
 
-.badge.available {
-  background-color: #d4edda;
-  color: #155724;
+th {
+  background-color: #b30000;
+  color: white;
 }
 
-.badge.limited {
-  background-color: #fff3cd;
-  color: #856404;
+/* Table Row Hover */
+tr:hover {
+  background-color: #ffe6e6;
 }
 
-.badge.urgent {
-  background-color: #f8d7da;
-  color: #721c24;
-  text-transform: uppercase;
+/* 8. Attribute Selectors for Form */
+form {
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  padding: 20px;
 }
 
-/* Inline Container <span> Styling */
-.highlight {
-  background-color: #ffff99; /* Highlighter Yellow */
-  color: #b30000;
-  padding: 2px 6px;
-  font-weight: bold;
-  border-radius: 3px;
-}
-
-.bold-emergency {
-  color: #cc0000;
-  font-weight: 900; /* Font Weight: 900 (Thickest) */
-}
-
-.small-caps-text {
-  font-variant: small-caps; /* CSS Font Variant: Small-Caps */
-  letter-spacing: 1px;
-}
-
-/* --------------------------------------------------------------------------
-   6. ATTRIBUTE SELECTORS
-   Matches elements based on an attribute or its value
-   -------------------------------------------------------------------------- */
 input[type="text"],
-input[type="email"],
 input[type="tel"],
 select,
 textarea {
   width: 100%;
-  padding: 10px 12px;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-textarea:focus,
-select:focus {
-  border-color: #b30000;
-  outline: none;
-  background-color: #fffbfb;
-}
-
-a[target="_blank"] {
-  font-weight: bold;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #999999;
 }
 
 input[type="submit"] {
   background-color: #b30000;
-  color: #ffffff;
-  padding: 12px 24px;
+  color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  margin-right: 10px;
-}
-
-input[type="reset"] {
-  background-color: #6c757d;
-  color: #ffffff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-/* --------------------------------------------------------------------------
-   7. PSEUDO-CLASS SELECTORS (:hover, :first-child, :link, :visited, :active)
-   -------------------------------------------------------------------------- */
-/* Navigation Links Styling with :hover */
-.nav-link {
-  color: #ffffff;
-  text-decoration: none; /* Text Decoration: None (Removes underline) */
-  margin: 0 14px;
-  font-weight: bold;
-  font-size: 0.95em;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.nav-link:hover {
-  background-color: #b30000; /* Changes background color on mouse hover */
-  color: #ffffff;
-  text-decoration: underline; /* Displays underline on hover */
 }
 
 input[type="submit"]:hover {
   background-color: #800000;
 }
 
-input[type="reset"]:hover {
-  background-color: #545b62;
+input[type="reset"] {
+  background-color: #666666;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
-/* Pseudo-Class :first-child */
-/* Highlights the first paragraph inside every article */
-article p:first-child {
-  font-weight: bold;
-  color: #222222;
-}
-
-/* Table Row Hover */
-#emergency-table tbody tr:hover {
-  background-color: #ffe6e6; /* Row highlight on mouse hover */
-}
-
-/* --------------------------------------------------------------------------
-   8. PSEUDO-ELEMENT SELECTOR (::before)
-   Inserts decorative content before the element
-   -------------------------------------------------------------------------- */
-.protocol-item::before {
-  content: "✔ ";
-  color: #28a745;
-  font-weight: bold;
-}
-
-p.urgent-notice::before {
-  content: "⚡ EMERGENCY BROADCAST: ";
-  color: #cc0000;
-  font-weight: 900;
-  font-size: 1.05em;
-}
-
-/* --------------------------------------------------------------------------
-   9. CSS TEXT DECORATION PROPERTIES (Line, Color, Style, Thickness)
-   -------------------------------------------------------------------------- */
-.wavy-underline {
-  text-decoration-line: underline;
-  text-decoration-color: #cc0000;
-  text-decoration-style: wavy;       /* Wavy style decoration line */
-  text-decoration-thickness: 2px;
-}
-
-.strike-text {
-  text-decoration-line: line-through; /* Strikethrough decoration */
-  text-decoration-color: #888888;
-}
-
-/* --------------------------------------------------------------------------
-   10. TABLE STYLING
-   -------------------------------------------------------------------------- */
-#emergency-table th, 
-#emergency-table td {
-  border: 1px solid #dddddd;
-  padding: 12px 14px;
-  text-align: left;
-}
-
-#emergency-table thead tr {
-  background-color: #b30000;
-  color: #ffffff;
-  text-align: center;
-}
-
-#emergency-table thead th {
-  color: #ffffff;
-  font-weight: bold;
-}
-
-#emergency-table tfoot tr {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-/* --------------------------------------------------------------------------
-   11. ASIDE & SIDEBAR STYLING
-   -------------------------------------------------------------------------- */
+/* 9. Aside Box */
 aside {
-  background-color: #fff5f5;
-  border-left: 4px solid #b30000;
-  padding: 16px 20px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-
-/* --------------------------------------------------------------------------
-   12. MULTIMEDIA & SVG CONTAINERS
-   -------------------------------------------------------------------------- */
-.multimedia-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
-  margin-top: 15px;
-}
-
-.media-card {
-  flex: 1 1 300px;
-  background: #fdfdfd;
+  background-color: #fff2f2;
+  border-left: 5px solid #b30000;
   padding: 15px;
-  border: 1px solid #eeeeee;
-  border-radius: 6px;
-  text-align: center;
+  margin: 20px 0;
 }
 
-.svg-container {
-  text-align: center;
-  margin: 15px 0;
-}
-
-/* --------------------------------------------------------------------------
-   13. FOOTER & ADDRESS STYLING
-   -------------------------------------------------------------------------- */
+/* 10. Footer */
 footer {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: #222222;
+  color: white;
   text-align: center;
-  padding: 30px 20px;
-  margin-top: 40px;
+  padding: 15px;
+  margin-top: 20px;
 }
 
 footer p {
-  color: #cccccc;
-  margin-bottom: 8px;
-}
-
-address {
-  font-style: normal;
-  color: #ff9999;
-  font-size: 0.95em;
-  margin-top: 10px;
+  font-size: 0.9em;
 }
