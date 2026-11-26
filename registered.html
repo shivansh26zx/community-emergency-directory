@@ -29,13 +29,13 @@
       background-color: #ffffff;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
-      max-width: 500px;
+      max-width: 520px;
       margin: 50px auto;
       padding: 30px 20px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     }
     h2 {
-      color: #16a34a; /* Normal clean green */
+      color: #16a34a;
       margin-bottom: 12px;
       font-size: 1.5em;
     }
@@ -44,19 +44,35 @@
       font-size: 1em;
       margin-bottom: 10px;
     }
-    a.btn-home {
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    a.btn {
       display: inline-block;
-      margin-top: 15px;
-      background-color: #1e3a8a;
-      color: #ffffff;
       text-decoration: none;
       font-weight: bold;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 4px;
+      font-size: 0.9em;
       transition: background-color 0.2s;
+    }
+    a.btn-home {
+      background-color: #1e3a8a;
+      color: #ffffff;
     }
     a.btn-home:hover {
       background-color: #1d4ed8;
+    }
+    a.btn-admin {
+      background-color: #991b1b;
+      color: #ffffff;
+    }
+    a.btn-admin:hover {
+      background-color: #7f1d1d;
     }
     footer {
       background-color: #0f172a;
@@ -74,10 +90,14 @@
   </header>
 
   <div class="confirmation-box">
-    <h2>✓ Admin Update Recorded!</h2>
-    <p>The emergency listing details and live availability status have been submitted to the directory.</p>
-    <p>Our district crisis control team has updated the operational records.</p>
-    <a href="index.html" class="btn-home">← Return to Main Directory</a>
+    <h2>✓ Update Recorded Successfully!</h2>
+    <p>The emergency shelter details, live capacity, or registration update has been committed to the directory.</p>
+    <p>Operational records are now synchronized for crisis relief coordinators.</p>
+    
+    <div class="btn-group">
+      <a href="index.html" class="btn btn-home">← Public Directory</a>
+      <a href="admin.html" class="btn btn-admin">🔐 Admin Portal</a>
+    </div>
   </div>
 
   <footer>

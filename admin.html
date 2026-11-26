@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ====================================================================
+       CSE326: INTERNET PROGRAMMING - TERM PROJECT
+       Title: Community Emergency Resource Directory - Admin Portal
+       Allotted Group: RK4P26XP (Roll Nos: 48, 49, 50)
+       Student: Shivansh Sharma | Reg No: 12611232 | Roll No: 48 | Section: K4P26XP
+       ==================================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Shivansh Sharma (Roll 48 - RK4P26XP)">
+  <meta name="description" content="Admin Portal for Community Emergency Resource Directory.">
+  <title>Admin Management Portal | Community Emergency Directory</title>
+
+  <!-- ====================================================================
+       UNIT #3: CLEAN, SIMPLE CSS STYLING (NORMAL STANDARD COLORS)
+       100% Pure HTML and CSS - No JavaScript
+       ==================================================================== -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Admin Red Warning Strip */
+    .admin-bar {
+      background-color: #991b1b;
+      color: #ffffff;
+      padding: 8px 16px;
+      font-size: 0.88em;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .admin-bar a {
+      color: #ffffff;
+      background-color: #7f1d1d;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.85em;
+    }
+
+    .admin-bar a:hover {
+      background-color: #450a0a;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      padding: 24px 16px;
+      text-align: center;
+      border-bottom: 3px solid #1d4ed8;
+    }
+
+    .group-tag {
+      display: inline-block;
+      background-color: #172554;
+      color: #93c5fd;
+      border: 1px solid #3b82f6;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      font-size: 1.9em;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #bfdbfe;
+      font-size: 1em;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #0f172a;
+      padding: 10px 14px;
+      text-align: center;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    nav a {
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 6px 12px;
+      margin: 0 4px;
+      font-weight: bold;
+      font-size: 0.88em;
+      border-radius: 4px;
+      display: inline-block;
+      transition: background-color 0.2s;
+    }
+
+    nav a:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    nav a.btn-public {
+      background-color: #16a34a;
+      color: #ffffff;
+    }
+
+    nav a.btn-public:hover {
+      background-color: #15803d;
+    }
+
+    main {
+      width: 92%;
+      max-width: 960px;
+      margin: 24px auto 40px auto;
+    }
+
+    section {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #1e3a8a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      font-size: 1.35em;
+    }
+
+    h3 {
+      color: #0f172a;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-size: 1.1em;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    .alert-box {
+      background-color: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      font-size: 0.92em;
+    }
+
+    /* Editable Shelter Management Grid */
+    .shelter-manage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .shelter-box {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid #d97706; /* Shelter Orange */
+      border-radius: 6px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .shelter-box.med-box {
+      border-left-color: #dc2626; /* Medical Red */
+    }
+
+    .shelter-box.food-box {
+      border-left-color: #16a34a; /* Food Green */
+    }
+
+    .box-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    /* HTML5 ContentEditable */
+    [contenteditable="true"] {
+      padding: 2px 4px;
+      border-radius: 3px;
+      background-color: #fefce8;
+      border: 1px dashed #ca8a04;
+    }
+
+    [contenteditable="true"]:focus {
+      background-color: #ffffff;
+      border-color: #2563eb;
+      outline: 2px solid #2563eb;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75em;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+
+    .badge-verified {
+      background-color: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-available {
+      background-color: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .badge-limited {
+      background-color: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .badge-full {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 4px;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95em;
+      background-color: #ffffff;
+      color: #1e293b;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .radio-label, .check-label {
+      font-weight: normal;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .form-buttons {
+      margin-top: 16px;
+    }
+
+    input[type="submit"],
+    button[type="submit"] {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.95em;
+      cursor: pointer;
+      margin-right: 8px;
+      transition: background-color 0.2s;
+    }
+
+    input[type="submit"]:hover,
+    button[type="submit"]:hover {
+      background-color: #1d4ed8;
+    }
+
+    input[type="reset"] {
+      background-color: #e2e8f0;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 10px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.95em;
+      cursor: pointer;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #cbd5e1;
+    }
+
+    .btn-save-inline {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #16a34a;
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.82em;
+      font-weight: bold;
+    }
+
+    .btn-save-inline:hover {
+      background-color: #15803d;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 0.9em;
+      border-top: 1px solid #334155;
+    }
+
+    footer p {
+      margin-bottom: 4px;
+    }
+
+    footer strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- ====================================================================
+       ADMIN WARNING BANNER
+       ==================================================================== -->
+  <div class="admin-bar">
+    <div>🛡️ RESTRICTED ACCESS: Emergency Management Administrative Console</div>
+    <div><a href="index.html">← Return to Public Directory</a></div>
+  </div>
+
+  <!-- ====================================================================
+       1. SEMANTIC HEADER (Unit #2)
+       ==================================================================== -->
+  <header>
+    <div class="group-tag">ALLOTTED PROJECT: GROUP RK4P26XP (Roll Nos: 48, 49, 50)</div>
+    <h1>Emergency Resource Directory — Admin Portal</h1>
+    <p>Nodal Management Control for Shelters, Hospitals, Capacity Updates &amp; Verification</p>
+  </header>
+
+  <!-- ====================================================================
+       2. NAVIGATION BAR (Unit #1)
+       ==================================================================== -->
+  <nav>
+    <a href="index.html" class="btn-public">← Public Directory</a>
+    <a href="#manage-shelters">Manage Shelters (Editable)</a>
+    <a href="#quick-status">Quick Status Update</a>
+    <a href="#register-facility">Register New Shelter</a>
+    <a href="#broadcast">Emergency Broadcast</a>
+  </nav>
+
+  <!-- ====================================================================
+       3. MAIN CONTENT
+       ==================================================================== -->
+  <main>
+
+    <!-- SECTION 1: MANAGE EXISTING SHELTERS (INLINE DIRECT EDITING) -->
+    <section id="manage-shelters">
+      <h2>1. Live Shelters &amp; Facilities Management (Direct Inline Editing)</h2>
+      
+      <div class="alert-box">
+        ✏️ <strong>Live Inline Editing Enabled (HTML5 <code>contenteditable="true"</code>):</strong> 
+        As an authorized administrator, you can click on any yellow-dashed box below to directly change shelter names, capacity numbers, phone contacts, and operational notes on the fly!
+      </div>
+
+      <div class="shelter-manage-grid">
+
+        <!-- Shelter 1: Govt High School -->
+        <div class="shelter-box">
+          <div class="box-title" contenteditable="true">Govt High School Shelter Ground</div>
+          <div style="margin-bottom: 8px;">
+            <span class="badge badge-verified">✓ Verified</span>
+            <span class="badge badge-available">🟢 Available</span>
+          </div>
+          <p><strong>Category:</strong> Disaster Evacuation Shelter</p>
+          <p><strong>Available Beds / Capacity:</strong> <span contenteditable="true">400 Persons</span></p>
+          <p><strong>Physical Location:</strong> <span contenteditable="true">North Campus Relief Ground, Jalandhar</span></p>
+          <p><strong>Nodal Officer Phone:</strong> <span contenteditable="true">9876543210</span></p>
+          <p><strong>Operational Notes:</strong> <span contenteditable="true">Hot food station active, 2 diesel generators on standby.</span></p>
+          <a href="registered.html" class="btn-save-inline">✓ Commit Updates to Directory</a>
+        </div>
+
+        <!-- Shelter 2: Sports Complex -->
+        <div class="shelter-box">
+          <div class="box-title" contenteditable="true">Community Sports Complex Hall</div>
+          <div style="margin-bottom: 8px;">
+            <span class="badge badge-verified">✓ Verified</span>
+            <span class="badge badge-full">🔴 Full (Waitlist)</span>
+          </div>
+          <p><strong>Category:</strong> Overflow Evacuation Shelter</p>
+          <p><strong>Available Beds / Capacity:</strong> <span contenteditable="true">0 Available (250/250 Full)</span></p>
+          <p><strong>Physical Location:</strong> <span contenteditable="true">West Zone Sports Enclave</span></p>
+          <p><strong>Nodal Officer Phone:</strong> <span contenteditable="true">9812345678</span></p>
+          <p><strong>Operational Notes:</strong> <span contenteditable="true">Full capacity reached. Directing new arrivals to North Campus.</span></p>
+          <a href="registered.html" class="btn-save-inline">✓ Commit Updates to Directory</a>
+        </div>
+
+        <!-- Shelter 3: Civil Hospital -->
+        <div class="shelter-box med-box">
+          <div class="box-title" contenteditable="true">Civil Hospital Trauma Wing</div>
+          <div style="margin-bottom: 8px;">
+            <span class="badge badge-verified">✓ Verified</span>
+            <span class="badge badge-available">🟢 Available</span>
+          </div>
+          <p><strong>Category:</strong> Medical Emergency Center</p>
+          <p><strong>Available Beds / Capacity:</strong> <span contenteditable="true">45 ICU &amp; Emergency Beds</span></p>
+          <p><strong>Physical Location:</strong> <span contenteditable="true">Civil Lines, Jalandhar</span></p>
+          <p><strong>Nodal Officer Phone:</strong> <span contenteditable="true">0181-2223344</span></p>
+          <p><strong>Operational Notes:</strong> <span contenteditable="true">Trauma operating rooms ready. Blood bank stock sufficient.</span></p>
+          <a href="registered.html" class="btn-save-inline">✓ Commit Updates to Directory</a>
+        </div>
+
+        <!-- Shelter 4: Red Cross Food Post -->
+        <div class="shelter-box food-box">
+          <div class="box-title" contenteditable="true">Red Cross Food &amp; Water Post</div>
+          <div style="margin-bottom: 8px;">
+            <span class="badge badge-verified">✓ Verified</span>
+            <span class="badge badge-available">🟢 Available</span>
+          </div>
+          <p><strong>Category:</strong> Food &amp; Clean Water Distribution</p>
+          <p><strong>Available Units / Stock:</strong> <span contenteditable="true">5000+ Litres Water / 1200 Meals</span></p>
+          <p><strong>Physical Location:</strong> <span contenteditable="true">Central Chowk Relief Camp</span></p>
+          <p><strong>Nodal Officer Phone:</strong> <span contenteditable="true">1800-111-222</span></p>
+          <p><strong>Operational Notes:</strong> <span contenteditable="true">Continuous 24-hour food and clean water supply.</span></p>
+          <a href="registered.html" class="btn-save-inline">✓ Commit Updates to Directory</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: QUICK CAPACITY & STATUS UPDATE FORM -->
+    <section id="quick-status">
+      <h2>2. Quick Availability &amp; Bed Capacity Update</h2>
+      <p>Submit immediate operational status updates for existing emergency facilities:</p>
+
+      <form action="registered.html" method="GET">
+
+        <div class="form-group">
+          <label for="select-facility">Select Facility / Shelter:</label>
+          <select id="select-facility" name="facility_name" required>
+            <option value="Govt High School Shelter">Govt High School Shelter Ground</option>
+            <option value="Community Sports Complex">Community Sports Complex Hall</option>
+            <option value="Civil Hospital Trauma Wing">Civil Hospital Trauma Wing</option>
+            <option value="Apex Relief Clinic">Apex Emergency Care Clinic</option>
+            <option value="Red Cross Relief Post">Red Cross Food &amp; Water Post</option>
+            <option value="District Control Room">District Disaster Control Room</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Update Availability Status:</label><br>
+          <label class="radio-label">
+            <input type="radio" name="new_status" value="Available" checked> 🟢 Available
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="new_status" value="Limited"> 🟡 Limited Capacity
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="new_status" value="Full"> 🔴 Full (Waitlist)
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="current-beds">Current Available Beds / Vacancies:</label>
+          <input type="number" id="current-beds" name="available_beds" placeholder="e.g. 50" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label class="check-label">
+            <input type="checkbox" name="officer_verified" value="yes" checked> 
+            <strong>Verified by Relief Nodal Officer on Duty</strong>
+          </label>
+        </div>
+
+        <div class="form-buttons">
+          <input type="submit" value="Publish Status Update">
+          <input type="reset" value="Reset Form">
+        </div>
+
+      </form>
+    </section>
+
+    <!-- SECTION 3: REGISTER NEW EMERGENCY FACILITY -->
+    <section id="register-facility">
+      <h2>3. Register New Emergency Shelter or Disaster Wing</h2>
+      <p>Add a newly commissioned shelter, medical wing, or supply center to the public directory:</p>
+
+      <form action="registered.html" method="GET">
+
+        <div class="form-group">
+          <label for="new-name">Facility / Shelter Name:</label>
+          <input type="text" id="new-name" name="facility_name" placeholder="e.g. Model Town Community Hall Shelter" required>
+        </div>
+
+        <div class="form-group">
+          <label for="new-cat">Resource Category:</label>
+          <select id="new-cat" name="category" required>
+            <option value="Disaster Shelter">Disaster Evacuation Shelter</option>
+            <option value="Medical Aid">Medical Aid &amp; Hospital</option>
+            <option value="Food & Water">Food &amp; Clean Water Distribution</option>
+            <option value="Emergency Helpline">Emergency Helpline Desk</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="new-capacity">Total Person Capacity / Beds:</label>
+          <input type="number" id="new-capacity" name="total_capacity" placeholder="e.g. 300" min="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="new-phone">Officer-in-Charge Phone Number:</label>
+          <input type="tel" id="new-phone" name="officer_phone" placeholder="e.g. 0181-2223344" required>
+        </div>
+
+        <div class="form-group">
+          <label for="new-location">Geographic Coordinates (Latitude, Longitude):</label>
+          <input type="text" id="new-location" name="coordinates" placeholder="e.g. 31.2530° N, 75.7037° E">
+        </div>
+
+        <div class="form-group">
+          <label for="new-address">Full Physical Address &amp; Landmarks:</label>
+          <textarea id="new-address" name="address" rows="3" placeholder="Enter landmark, entry gates, street address..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Available On-Site Emergency Amenities:</label><br>
+          <label class="check-label"><input type="checkbox" name="amenity" value="water" checked> Clean Drinking Water</label>
+          <label class="check-label"><input type="checkbox" name="amenity" value="power" checked> Diesel Power Generator</label>
+          <label class="check-label"><input type="checkbox" name="amenity" value="firstaid" checked> First Aid Station</label>
+          <label class="check-label"><input type="checkbox" name="amenity" value="wheelchair"> Wheelchair Access</label>
+          <label class="check-label"><input type="checkbox" name="amenity" value="meals"> Hot Meals Counter</label>
+        </div>
+
+        <div class="form-buttons">
+          <input type="submit" value="Register Listing in Directory">
+          <input type="reset" value="Clear Form">
+        </div>
+
+      </form>
+    </section>
+
+    <!-- SECTION 4: EMERGENCY BROADCAST MESSAGE -->
+    <section id="broadcast">
+      <h2>4. Citizen Emergency Advisory Broadcast</h2>
+      <p>Broadcast high-priority disaster warnings to the top banner of the public directory:</p>
+
+      <form action="registered.html" method="GET">
+
+        <div class="form-group">
+          <label for="alert-level">Advisory Severity Level:</label>
+          <select id="alert-level" name="severity">
+            <option value="Yellow">🟡 Yellow Advisory - Standby Warning</option>
+            <option value="Orange">🟠 Orange Alert - Prepare for Evacuation</option>
+            <option value="Red" selected>🔴 Red Alert - Immediate Shelter Relocation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="broadcast-msg">Broadcast Headline &amp; Instructions:</label>
+          <textarea id="broadcast-msg" name="broadcast_message" rows="3" placeholder="e.g. Heavy water logging near GT Road. Residents should relocate to North Campus Shelter immediately."></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <input type="submit" value="Publish Emergency Broadcast">
+        </div>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       4. SEMANTIC FOOTER
+       ==================================================================== -->
+  <footer>
+    <p><strong>Community Emergency Resource Directory — Administrative Portal</strong></p>
+    <p>Allotted Group Code: <strong>RK4P26XP</strong> (Roll Numbers: 48, 49, 50)</p>
+    <p>Student Name: <strong>Shivansh Sharma (Roll No: 48)</strong> | Reg No: <strong>12611232</strong> | Section: <strong>K4P26XP</strong></p>
+    <p>Group Members: <strong>RK4P26XPB48</strong> (Shivansh), <strong>RK4P26XPB49</strong>, <strong>RK4P26XPB50</strong></p>
+    <p style="margin-top: 8px; color: #94a3b8;">&copy; 2026 Lovely Professional University. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

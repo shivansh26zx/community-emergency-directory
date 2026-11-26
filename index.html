@@ -32,33 +32,44 @@
     /* 2. Normal, Clean Body Background & Typography */
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background-color: #f8fafc; /* Normal clean light grey */
-      color: #1e293b;            /* Normal dark readable text */
+      background-color: #f8fafc; /* Clean light grey */
+      color: #1e293b;            /* Dark readable slate */
       line-height: 1.6;
     }
 
-    /* 3. Emergency Alert Top Strip */
+    /* 3. Emergency Advisory Top Strip */
     .emergency-banner {
       background-color: #b91c1c; /* Normal emergency red */
       color: #ffffff;
-      text-align: center;
-      padding: 8px 12px;
+      padding: 9px 14px;
       font-size: 0.9em;
       font-weight: bold;
-      letter-spacing: 0.5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
 
-    .emergency-banner a {
-      color: #fef08a;
-      text-decoration: underline;
-      margin-left: 6px;
+    .emergency-banner a.admin-link {
+      background-color: #ffffff;
+      color: #b91c1c;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    .emergency-banner a.admin-link:hover {
+      background-color: #fef2f2;
     }
 
     /* 4. Semantic Header */
     header {
-      background-color: #1e3a8a; /* Normal classic navy blue */
+      background-color: #1e3a8a; /* Classic Navy Blue */
       color: #ffffff;
-      padding: 24px 16px;
+      padding: 26px 16px;
       text-align: center;
       border-bottom: 3px solid #1d4ed8;
     }
@@ -68,7 +79,7 @@
       background-color: #172554;
       color: #93c5fd;
       border: 1px solid #3b82f6;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 4px;
       font-size: 0.85em;
       font-weight: bold;
@@ -90,7 +101,7 @@
     nav {
       position: sticky;
       top: 0;
-      background-color: #0f172a; /* Clean dark slate */
+      background-color: #0f172a; /* Dark slate */
       padding: 10px 14px;
       text-align: center;
       z-index: 100;
@@ -114,20 +125,29 @@
       color: #ffffff;
     }
 
+    nav a.nav-admin {
+      background-color: #b91c1c;
+      color: #ffffff;
+    }
+
+    nav a.nav-admin:hover {
+      background-color: #991b1b;
+    }
+
     /* 6. Main Content Container */
     main {
       width: 92%;
-      max-width: 940px;
+      max-width: 960px;
       margin: 24px auto 40px auto;
     }
 
     /* 7. Clean Section Cards */
     section {
-      background-color: #ffffff; /* Normal clean white */
+      background-color: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      padding: 22px;
-      margin-bottom: 22px;
+      padding: 24px;
+      margin-bottom: 24px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
@@ -152,7 +172,7 @@
 
     /* 8. Pure CSS Category Filter Workflow (Zero JavaScript) */
     .filter-switch {
-      display: none; /* Hide real radio inputs */
+      display: none;
     }
 
     .filter-tabs {
@@ -178,7 +198,6 @@
       background-color: #e2e8f0;
     }
 
-    /* Active tab indicators based on selected radio */
     #tab-all:checked ~ .filter-tabs label[for="tab-all"],
     #tab-med:checked ~ .filter-tabs label[for="tab-med"],
     #tab-she:checked ~ .filter-tabs label[for="tab-she"],
@@ -189,7 +208,7 @@
       border-color: #1e3a8a;
     }
 
-    /* Filtering cards with Pure CSS sibling selectors */
+    /* Pure CSS card hiding based on selected tab */
     #tab-med:checked ~ .resource-grid .card:not(.cat-medical),
     #tab-she:checked ~ .resource-grid .card:not(.cat-shelter),
     #tab-foo:checked ~ .resource-grid .card:not(.cat-food),
@@ -197,31 +216,61 @@
       display: none;
     }
 
-    /* 9. Resource Grid & Normal Cards */
+    /* 9. Resource Grid & Editable Cards */
     .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
     }
 
     .card {
       background-color: #ffffff;
       border: 1px solid #cbd5e1;
-      border-left: 4px solid #1e3a8a; /* Category indicator */
+      border-left: 5px solid #1e3a8a;
       border-radius: 6px;
       padding: 16px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      position: relative;
     }
 
-    .card.cat-medical { border-left-color: #dc2626; }  /* Red for Medical */
-    .card.cat-shelter { border-left-color: #d97706; }  /* Orange for Shelter */
-    .card.cat-food    { border-left-color: #16a34a; }  /* Green for Food */
-    .card.cat-helpline{ border-left-color: #2563eb; }  /* Blue for Helpline */
+    .card.cat-medical { border-left-color: #dc2626; }
+    .card.cat-shelter { border-left-color: #d97706; }
+    .card.cat-food    { border-left-color: #16a34a; }
+    .card.cat-helpline{ border-left-color: #2563eb; }
 
     .card-title {
       font-size: 1.1em;
       font-weight: bold;
       color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    /* HTML5 ContentEditable Visual Indicator */
+    [contenteditable="true"] {
+      padding: 2px 4px;
+      border-radius: 3px;
+      transition: background-color 0.2s, outline 0.2s;
+    }
+
+    [contenteditable="true"]:hover {
+      background-color: #fef9c3; /* Light yellow hover to show it's editable */
+      outline: 1px dashed #ca8a04;
+      cursor: text;
+    }
+
+    [contenteditable="true"]:focus {
+      background-color: #ffffff;
+      outline: 2px solid #2563eb;
+    }
+
+    .editable-badge {
+      font-size: 0.72em;
+      background-color: #f1f5f9;
+      color: #64748b;
+      border: 1px dashed #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
       margin-bottom: 6px;
     }
 
@@ -269,6 +318,43 @@
       border: 1px solid #fecaca;
     }
 
+    .card-actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      display: inline-block;
+      font-size: 0.82em;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn-map {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    .btn-map:hover {
+      background-color: #bae6fd;
+    }
+
+    .btn-call {
+      background-color: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
+    .btn-call:hover {
+      background-color: #bbf7d0;
+    }
+
     /* 11. Normal Standard HTML Table */
     table {
       width: 100%;
@@ -300,86 +386,108 @@
       background-color: #f8fafc;
     }
 
-    /* 12. Normal Clean Form Elements */
-    .form-group {
+    /* 12. Location & Map Section Styles */
+    .map-controls {
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 14px;
       margin-bottom: 14px;
     }
 
-    label {
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 4px;
-      color: #334155;
+    .map-buttons-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
     }
 
-    input[type="text"],
-    input[type="tel"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 9px 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95em;
+    .map-btn {
       background-color: #ffffff;
-      color: #1e293b;
+      color: #1e3a8a;
+      border: 1px solid #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
     }
 
-    input[type="text"]:focus,
-    input[type="tel"]:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-    }
-
-    .radio-label, .check-label {
-      font-weight: normal;
-      margin-right: 15px;
-      cursor: pointer;
-    }
-
-    .form-buttons {
-      margin-top: 16px;
-    }
-
-    input[type="submit"] {
+    .map-btn:hover {
       background-color: #1e3a8a;
       color: #ffffff;
-      border: none;
-      padding: 10px 20px;
+      border-color: #1e3a8a;
+    }
+
+    .gps-btn {
+      background-color: #16a34a;
+      color: #ffffff;
+      border: 1px solid #15803d;
+    }
+
+    .gps-btn:hover {
+      background-color: #15803d;
+      color: #ffffff;
+    }
+
+    .gps-hosp-btn {
+      background-color: #dc2626;
+      color: #ffffff;
+      border: 1px solid #b91c1c;
+    }
+
+    .gps-hosp-btn:hover {
+      background-color: #b91c1c;
+      color: #ffffff;
+    }
+
+    .map-container {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* 13. Notice / Callout Boxes */
+    .info-callout {
+      background-color: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
       border-radius: 4px;
+      margin-bottom: 16px;
+      font-size: 0.92em;
+    }
+
+    .admin-callout {
+      background-color: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 5px solid #dc2626;
+      padding: 16px;
+      border-radius: 6px;
+      margin-top: 14px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #1e3a8a;
+      color: #ffffff;
+      text-decoration: none;
       font-weight: bold;
-      font-size: 0.95em;
-      cursor: pointer;
-      margin-right: 8px;
+      padding: 10px 18px;
+      border-radius: 4px;
+      margin-top: 8px;
       transition: background-color 0.2s;
     }
 
-    input[type="submit"]:hover {
+    .btn-primary:hover {
       background-color: #1d4ed8;
     }
 
-    input[type="reset"] {
-      background-color: #e2e8f0;
-      color: #334155;
-      border: 1px solid #cbd5e1;
-      padding: 10px 16px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 0.95em;
-      cursor: pointer;
-    }
-
-    input[type="reset"]:hover {
-      background-color: #cbd5e1;
-    }
-
-    /* 13. Aside Quick Helplines Box */
+    /* 14. Aside Quick Helplines Box */
     aside {
-      background-color: #eff6ff; /* Light blue info box */
+      background-color: #eff6ff;
       border: 1px solid #bfdbfe;
       border-left: 5px solid #2563eb;
       border-radius: 6px;
@@ -397,7 +505,7 @@
       text-decoration: underline;
     }
 
-    /* 14. Floating Back to Top */
+    /* 15. Floating Back to Top */
     .top-link {
       position: fixed;
       bottom: 20px;
@@ -416,7 +524,7 @@
       background-color: #2563eb;
     }
 
-    /* 15. Semantic Footer */
+    /* 16. Semantic Footer */
     footer {
       background-color: #0f172a;
       color: #cbd5e1;
@@ -438,10 +546,15 @@
 <body id="top">
 
   <!-- ====================================================================
-       TOP BANNER: QUICK EMERGENCY DISPATCH
+       TOP BANNER: QUICK EMERGENCY DISPATCH + LINK TO SEPARATE ADMIN PORTAL
        ==================================================================== -->
   <div class="emergency-banner">
-    ⚠️ EMERGENCY ADVISORY: Dial <strong>112</strong> for immediate crisis dispatch | 24x7 State Helpline: <a href="tel:1070">1070</a>
+    <div>
+      ⚠️ EMERGENCY HOTLINE: Dial <strong>112</strong> for immediate crisis dispatch | 24x7 State Helpline: <a href="tel:1070" style="color: #fef08a;">1070</a>
+    </div>
+    <div>
+      <a href="admin.html" class="admin-link">🔐 Separate Admin Portal →</a>
+    </div>
   </div>
 
   <!-- ====================================================================
@@ -454,16 +567,17 @@
   </header>
 
   <!-- ====================================================================
-       2. NAVIGATION BAR (Unit #1: Internal Anchor Links)
+       2. NAVIGATION BAR (Unit #1: Internal Anchor Links + Separate Admin Link)
        ==================================================================== -->
   <nav>
     <a href="#about">Overview</a>
     <a href="#listings">Resource Listings</a>
     <a href="#schedule">Availability Table</a>
-    <a href="#mapview">Location Map</a>
-    <a href="#admin-updates">Admin Updates</a>
+    <a href="#mapview">Interactive Map &amp; GPS</a>
     <a href="#media">Audio &amp; Video</a>
+    <a href="#admin-section">Admin Portal</a>
     <a href="#hotlines">Helplines</a>
+    <a href="admin.html" class="nav-admin">🔐 Open Admin Page</a>
   </nav>
 
   <!-- ====================================================================
@@ -498,10 +612,16 @@
       </div>
     </section>
 
-    <!-- SECTION 2: RESOURCE LISTINGS & CATEGORIES (Sheet Deliverable: Pure CSS Filter) -->
+    <!-- SECTION 2: RESOURCE LISTINGS & CATEGORIES (With HTML5 ContentEditable) -->
     <section id="listings">
-      <h2>2. Resource Listings &amp; Categories</h2>
-      <p>Click any category tab to filter listings instantly (Pure CSS Filter - No JavaScript required):</p>
+      <h2>2. Resource Listings &amp; Categories (Editable)</h2>
+      
+      <div class="info-callout">
+        ✏️ <strong>Live Inline Editing Active (HTML5 <code>contenteditable="true"</code>):</strong> 
+        You can click directly on any shelter name, available capacity, phone number, or notes below to edit them right in your browser!
+      </div>
+
+      <p>Click any category tab to filter listings instantly (Pure CSS Filter - No JavaScript):</p>
 
       <!-- Hidden Radio Buttons for Pure CSS State Filtering -->
       <input type="radio" id="tab-all" name="cat" class="filter-switch" checked>
@@ -519,85 +639,122 @@
         <label for="tab-hel" class="filter-tab">Emergency Helplines</label>
       </div>
 
-      <!-- Resource Listings Cards Grid -->
+      <!-- Resource Listings Cards Grid (All Cards have contenteditable fields) -->
       <div class="resource-grid">
 
         <!-- Card 1: Medical -->
         <div class="card cat-medical">
-          <div class="card-title">Civil Hospital Trauma Wing</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">Civil Hospital Trauma Wing</div>
           <div class="badges">
             <span class="badge badge-verified">✓ Verified</span>
             <span class="badge badge-available">🟢 Available</span>
           </div>
           <p><strong>Category:</strong> Medical Aid</p>
-          <p><strong>Location:</strong> Civil Lines, Jalandhar</p>
-          <p><strong>Contact:</strong> <a href="tel:01812223344" style="color: #1e3a8a; font-weight: bold;">0181-2223344</a></p>
-          <p><small style="color: #64748b;">24/7 emergency trauma facility, ICU beds, oxygen, and ambulance fleet.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">Civil Lines, Jalandhar</span></p>
+          <p><strong>Contact:</strong> <a href="tel:01812223344" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">0181-2223344</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">Capacity: 45 ICU beds, oxygen bank, and 6 standby ambulances.</small></p>
+          
+          <div class="card-actions">
+            <!-- Native HTML target="map-frame" to load on the embedded map below -->
+            <a href="https://maps.google.com/maps?q=Civil%20Hospital%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:01812223344" class="btn-action btn-call">📞 Call Now</a>
+          </div>
         </div>
 
         <!-- Card 2: Medical -->
         <div class="card cat-medical">
-          <div class="card-title">Apex Emergency Care Clinic</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">Apex Emergency Care Clinic</div>
           <div class="badges">
             <span class="badge badge-verified">✓ Verified</span>
             <span class="badge badge-limited">🟡 Limited Beds</span>
           </div>
           <p><strong>Category:</strong> Medical Aid</p>
-          <p><strong>Location:</strong> GT Road Relief Sector</p>
-          <p><strong>Contact:</strong> <a href="tel:01819998877" style="color: #1e3a8a; font-weight: bold;">0181-9998877</a></p>
-          <p><small style="color: #64748b;">Outpatient urgent care, basic surgery, and first-aid kits.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">GT Road Relief Sector</span></p>
+          <p><strong>Contact:</strong> <a href="tel:01819998877" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">0181-9998877</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">Capacity: 8 remaining general beds, first-aid triage, and burn dressing kits.</small></p>
+          
+          <div class="card-actions">
+            <a href="https://maps.google.com/maps?q=Apex%20Hospital%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:01819998877" class="btn-action btn-call">📞 Call Now</a>
+          </div>
         </div>
 
         <!-- Card 3: Shelter -->
         <div class="card cat-shelter">
-          <div class="card-title">Govt High School Shelter Ground</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">Govt High School Shelter Ground</div>
           <div class="badges">
             <span class="badge badge-verified">✓ Verified</span>
             <span class="badge badge-available">🟢 Available</span>
           </div>
           <p><strong>Category:</strong> Disaster Shelter</p>
-          <p><strong>Location:</strong> North Campus Relief Sector</p>
-          <p><strong>Contact:</strong> <a href="tel:9876543210" style="color: #1e3a8a; font-weight: bold;">9876543210</a></p>
-          <p><small style="color: #64748b;">Capacity: 400 persons with dry bedding, power backup, and sanitation.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">North Campus Relief Sector</span></p>
+          <p><strong>Contact:</strong> <a href="tel:9876543210" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">9876543210</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">Capacity: 400 persons with dry bedding, backup generator, and hot food counter.</small></p>
+          
+          <div class="card-actions">
+            <a href="https://maps.google.com/maps?q=Govt%20High%20School%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:9876543210" class="btn-action btn-call">📞 Call Now</a>
+          </div>
         </div>
 
         <!-- Card 4: Shelter -->
         <div class="card cat-shelter">
-          <div class="card-title">Community Sports Complex Hall</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">Community Sports Complex Hall</div>
           <div class="badges">
             <span class="badge badge-pending">⏳ Pending Check</span>
             <span class="badge badge-full">🔴 Full (Waitlist)</span>
           </div>
           <p><strong>Category:</strong> Disaster Shelter</p>
-          <p><strong>Location:</strong> West Zone Sports Enclave</p>
-          <p><strong>Contact:</strong> <a href="tel:9812345678" style="color: #1e3a8a; font-weight: bold;">9812345678</a></p>
-          <p><small style="color: #64748b;">Temporary overflow indoor relief hall for evacuated families.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">West Zone Sports Enclave</span></p>
+          <p><strong>Contact:</strong> <a href="tel:9812345678" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">9812345678</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">Capacity: 250/250 filled. Next intake opens in 4 hours.</small></p>
+          
+          <div class="card-actions">
+            <a href="https://maps.google.com/maps?q=Sports%20Complex%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:9812345678" class="btn-action btn-call">📞 Call Now</a>
+          </div>
         </div>
 
         <!-- Card 5: Food & Water -->
         <div class="card cat-food">
-          <div class="card-title">Red Cross Relief Food &amp; Water Post</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">Red Cross Relief Food &amp; Water Post</div>
           <div class="badges">
             <span class="badge badge-verified">✓ Verified</span>
             <span class="badge badge-available">🟢 Available</span>
           </div>
           <p><strong>Category:</strong> Food &amp; Clean Water</p>
-          <p><strong>Location:</strong> Central Chowk Relief Camp</p>
-          <p><strong>Contact:</strong> <a href="tel:1800111222" style="color: #1e3a8a; font-weight: bold;">1800-111-222</a></p>
-          <p><small style="color: #64748b;">Packaged mineral water bottles, warm meals, and infant food supplies.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">Central Chowk Relief Camp</span></p>
+          <p><strong>Contact:</strong> <a href="tel:1800111222" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">1800-111-222</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">5000+ packaged mineral water pouches and ready-to-eat ration packets in stock.</small></p>
+          
+          <div class="card-actions">
+            <a href="https://maps.google.com/maps?q=Red%20Cross%20Society%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:1800111222" class="btn-action btn-call">📞 Call Now</a>
+          </div>
         </div>
 
         <!-- Card 6: Helpline -->
         <div class="card cat-helpline">
-          <div class="card-title">District Disaster Control Room</div>
+          <span class="editable-badge">✏️ Click to Edit</span>
+          <div class="card-title" contenteditable="true">District Disaster Control Room</div>
           <div class="badges">
             <span class="badge badge-verified">✓ Verified</span>
             <span class="badge badge-available">🟢 Available</span>
           </div>
           <p><strong>Category:</strong> Emergency Helpline</p>
-          <p><strong>Location:</strong> District Administrative Complex</p>
-          <p><strong>Contact:</strong> <a href="tel:1070" style="color: #1e3a8a; font-weight: bold;">1070 (Toll-Free)</a></p>
-          <p><small style="color: #64748b;">24x7 nodal emergency helpline and district rescue dispatch.</small></p>
+          <p><strong>Location:</strong> <span contenteditable="true">District Administrative Complex</span></p>
+          <p><strong>Contact:</strong> <a href="tel:1070" style="color: #1e3a8a; font-weight: bold;"><span contenteditable="true">1070 (Toll-Free)</span></a></p>
+          <p><small style="color: #64748b;" contenteditable="true">24x7 district nodal officer helpline and live rescue dispatch desk.</small></p>
+          
+          <div class="card-actions">
+            <a href="https://maps.google.com/maps?q=District%20Administrative%20Complex%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="btn-action btn-map">📍 View on Map</a>
+            <a href="tel:1070" class="btn-action btn-call">📞 Call Desk</a>
+          </div>
         </div>
 
       </div>
@@ -605,8 +762,8 @@
 
     <!-- SECTION 3: AVAILABILITY STATUS MATRIX (Unit #1: Table with Rowspan and Colspan) -->
     <section id="schedule">
-      <h2>3. Availability Status &amp; Operational Matrix</h2>
-      <p>Live schedule demonstrating HTML table structure, <strong>rowspan</strong>, and <strong>colspan</strong>:</p>
+      <h2>3. Availability Status &amp; Operational Matrix (Editable)</h2>
+      <p>Live schedule demonstrating HTML table structure, <strong>rowspan</strong>, and <strong>colspan</strong> (Cells with dashed outlines can be edited directly):</p>
 
       <table border="1">
         <caption>Table 1.1: Live Emergency Operational Hours &amp; Capacity Matrix</caption>
@@ -628,17 +785,17 @@
           <!-- ROWSPAN = 2: Groups two Medical Aid facilities -->
           <tr>
             <td rowspan="2"><b>Medical Aid</b></td>
-            <td>Civil Hospital Trauma Wing</td>
-            <td>08:00 AM – 02:00 PM</td>
-            <td>02:00 PM – 08:00 PM</td>
+            <td contenteditable="true">Civil Hospital Trauma Wing</td>
+            <td contenteditable="true">08:00 AM – 02:00 PM</td>
+            <td contenteditable="true">02:00 PM – 08:00 PM</td>
             <td><span class="badge badge-verified">✓ Verified</span></td>
             <td><span class="badge badge-available">🟢 Available</span></td>
             <td><a href="tel:01812223344">0181-2223344</a></td>
           </tr>
           <tr>
-            <td>Apex Relief Clinic</td>
-            <td>09:00 AM – 01:00 PM</td>
-            <td>02:00 PM – 06:00 PM</td>
+            <td contenteditable="true">Apex Relief Clinic</td>
+            <td contenteditable="true">09:00 AM – 01:00 PM</td>
+            <td contenteditable="true">02:00 PM – 06:00 PM</td>
             <td><span class="badge badge-verified">✓ Verified</span></td>
             <td><span class="badge badge-limited">🟡 Limited</span></td>
             <td><a href="tel:01819998877">0181-9998877</a></td>
@@ -647,17 +804,17 @@
           <!-- ROWSPAN = 2: Groups two Shelter facilities -->
           <tr>
             <td rowspan="2"><b>Disaster Shelter</b></td>
-            <td>Govt High School Shelter Ground</td>
-            <td>06:00 AM – 12:00 PM</td>
-            <td>12:00 PM – 10:00 PM</td>
+            <td contenteditable="true">Govt High School Shelter Ground</td>
+            <td contenteditable="true">06:00 AM – 12:00 PM</td>
+            <td contenteditable="true">12:00 PM – 10:00 PM</td>
             <td><span class="badge badge-verified">✓ Verified</span></td>
             <td><span class="badge badge-available">🟢 Available</span></td>
             <td><a href="tel:9876543210">9876543210</a></td>
           </tr>
           <tr>
-            <td>Community Sports Complex</td>
-            <td>07:00 AM – 01:00 PM</td>
-            <td>01:00 PM – 11:00 PM</td>
+            <td contenteditable="true">Community Sports Complex</td>
+            <td contenteditable="true">07:00 AM – 01:00 PM</td>
+            <td contenteditable="true">01:00 PM – 11:00 PM</td>
             <td><span class="badge badge-pending">⏳ Pending</span></td>
             <td><span class="badge badge-full">🔴 Full</span></td>
             <td><a href="tel:9812345678">9812345678</a></td>
@@ -666,8 +823,8 @@
           <!-- COLSPAN = 2: Merges Morning and Evening shifts for 24-hr service -->
           <tr>
             <td><b>Food &amp; Clean Water</b></td>
-            <td>Red Cross Relief Post</td>
-            <td colspan="2" style="text-align: center; font-weight: bold; color: #166534;">Open 24 Hours Continuous Dispatch</td>
+            <td contenteditable="true">Red Cross Relief Post</td>
+            <td colspan="2" style="text-align: center; font-weight: bold; color: #166534;" contenteditable="true">Open 24 Hours Continuous Dispatch</td>
             <td><span class="badge badge-verified">✓ Verified</span></td>
             <td><span class="badge badge-available">🟢 Available</span></td>
             <td><a href="tel:1800111222">1800-111-222</a></td>
@@ -676,92 +833,52 @@
       </table>
     </section>
 
-    <!-- SECTION 4: LOCATION / MAP VIEW (Sheet Deliverable: Location/Map View) -->
+    <!-- SECTION 4: INTERACTIVE LOCATION & MAP VIEW (With Facility Switcher + Current Location GPS) -->
     <section id="mapview">
-      <h2>4. Location &amp; Geographic Map View</h2>
-      <p>Interactive location-aware map showing the emergency disaster response hub (Unit 1: Iframe embed):</p>
+      <h2>4. Interactive Location Map &amp; My Location Finder</h2>
+      
+      <p>
+        Click any button below to switch the interactive map to that specific shelter/facility, or tap the green button to automatically locate emergency shelters near your current device GPS location:
+      </p>
 
-      <iframe src="https://maps.google.com/maps?q=Civil%20Hospital%20Jalandhar&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-              width="100%" 
-              height="300" 
-              style="border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 8px;">
-      </iframe>
+      <!-- Map Switcher Toolbar using Pure HTML target="map-frame" -->
+      <div class="map-controls">
+        <p><strong>1. Locate Specific Shelter on Map (Loads Below):</strong></p>
+        <div class="map-buttons-grid">
+          <a href="https://maps.google.com/maps?q=Civil%20Hospital%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="map-btn">🏥 Civil Hospital Trauma Wing</a>
+          <a href="https://maps.google.com/maps?q=Govt%20High%20School%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="map-btn">🏕️ Govt High School Shelter Ground</a>
+          <a href="https://maps.google.com/maps?q=Apex%20Hospital%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="map-btn">🏥 Apex Emergency Care Clinic</a>
+          <a href="https://maps.google.com/maps?q=Sports%20Complex%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="map-btn">🏟️ Sports Complex Overflow Shelter</a>
+          <a href="https://maps.google.com/maps?q=Red%20Cross%20Society%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" target="map-frame" class="map-btn">🍲 Red Cross Relief Post</a>
+        </div>
+
+        <p style="margin-top: 14px;"><strong>2. Check Shelters &amp; Hospitals Near My Own Location (GPS):</strong></p>
+        <div class="map-buttons-grid">
+          <a href="https://www.google.com/maps/search/emergency+shelters+near+me/" target="_blank" class="map-btn gps-btn">📍 Find Shelters Near My Current Location (Google Maps)</a>
+          <a href="https://www.google.com/maps/search/emergency+hospitals+near+me/" target="_blank" class="map-btn gps-hosp-btn">🏥 Find Hospitals Near My Current Location (Google Maps)</a>
+        </div>
+      </div>
+
+      <!-- Embedded Iframe with name="map-frame" so hyperlinks dynamically update its location -->
+      <div class="map-container">
+        <iframe name="map-frame" 
+                id="map-frame" 
+                src="https://maps.google.com/maps?q=Civil%20Hospital%20Jalandhar&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="340" 
+                style="border: none;" 
+                allowfullscreen>
+        </iframe>
+      </div>
 
       <p style="margin-top: 10px; font-size: 0.9em; color: #475569;">
         📍 <strong>Local Hub Coordinates:</strong> Civil Hospital Wing (Lat: 31.2530° N, Lng: 75.7037° E) | Govt Shelter Ground (Lat: 31.2580° N, Lng: 75.7090° E)
       </p>
     </section>
 
-    <!-- SECTION 5: ADMIN UPDATES (Sheet Deliverable: Admin Updates Form) -->
-    <section id="admin-updates">
-      <h2>5. Admin Updates &amp; Resource Verification Portal</h2>
-      <p>Authorized relief officers can add new resources, update live capacity, or mark listings as verified:</p>
-
-      <!-- Standard HTML Form submitting to registered.html -->
-      <form action="registered.html" method="GET">
-
-        <!-- Center Name (Text input) -->
-        <div class="form-group">
-          <label for="center-name">Resource / Center Name:</label>
-          <input type="text" id="center-name" name="center_name" placeholder="e.g. Model Town Trauma Relief Center" required>
-        </div>
-
-        <!-- Category Dropdown (Select/Option) -->
-        <div class="form-group">
-          <label for="center-cat">Resource Category:</label>
-          <select id="center-cat" name="category">
-            <option value="Medical Aid">Medical Aid</option>
-            <option value="Disaster Shelter">Disaster Shelter</option>
-            <option value="Food & Water">Food & Clean Water</option>
-            <option value="Emergency Helpline">Emergency Helpline</option>
-          </select>
-        </div>
-
-        <!-- Availability Status (Radio Buttons) -->
-        <div class="form-group">
-          <label>Current Availability Status:</label><br>
-          <label class="radio-label">
-            <input type="radio" name="availability" value="Available" checked> 🟢 Available
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="availability" value="Limited"> 🟡 Limited Beds
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="availability" value="Full"> 🔴 Full
-          </label>
-        </div>
-
-        <!-- Verification Checkbox -->
-        <div class="form-group">
-          <label class="check-label">
-            <input type="checkbox" name="verified" value="yes" checked> <strong>Mark as Verified by District Disaster Management Officer</strong>
-          </label>
-        </div>
-
-        <!-- Contact Phone (Tel Input) -->
-        <div class="form-group">
-          <label for="center-phone">Official Contact Phone Number:</label>
-          <input type="tel" id="center-phone" name="phone" placeholder="e.g. 0181-2223344" required>
-        </div>
-
-        <!-- Address (Textarea) -->
-        <div class="form-group">
-          <label for="center-addr">Physical Address &amp; Capacity Details:</label>
-          <textarea id="center-addr" name="address" rows="3" placeholder="Enter landmark, street address, and bed count..."></textarea>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="form-buttons">
-          <input type="submit" value="Save Admin Update">
-          <input type="reset" value="Reset Form">
-        </div>
-
-      </form>
-    </section>
-
-    <!-- SECTION 6: EMERGENCY AUDIO & VIDEO (Unit #1: Multimedia) -->
+    <!-- SECTION 5: EMERGENCY AUDIO & VIDEO (Unit #1: Multimedia) -->
     <section id="media">
-      <h2>6. Multimedia Emergency Advisory</h2>
+      <h2>5. Multimedia Emergency Advisory</h2>
 
       <!-- Real Siren Audio -->
       <h3>1. Emergency Alert Siren Tone</h3>
@@ -781,6 +898,21 @@
               style="border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 6px;" 
               allowfullscreen>
       </iframe>
+    </section>
+
+    <!-- SECTION 6: SEPARATE ADMIN PORTAL CALLOUT -->
+    <section id="admin-section">
+      <h2>6. Separate Administrative Updates Portal</h2>
+      <div class="admin-callout">
+        <h3 style="margin-top: 0; color: #991b1b;">🔐 Dedicated Admin Management Portal</h3>
+        <p>
+          As requested by emergency response teams, administrative updates and shelter management are hosted on a <strong>dedicated, separate portal</strong> (<code>admin.html</code>) to protect operational workflows.
+        </p>
+        <p>
+          Relief officers can register new shelters, update live occupancy numbers, broadcast emergency alerts, and verify relief centers.
+        </p>
+        <a href="admin.html" class="btn-primary">Go to Separate Admin Portal (admin.html) →</a>
+      </div>
     </section>
 
     <!-- ASIDE (Unit #2: Semantic Aside) -->
