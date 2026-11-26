@@ -9,229 +9,345 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Shivansh Sharma">
-  <meta name="description" content="Community Emergency Resource Directory - Built using HTML5 and CSS3 for CSE326">
+  <meta name="description" content="Community Emergency Resource Directory with Modern Glassmorphism - 100% Pure HTML and CSS">
   <title>Community Emergency Resource Directory</title>
 
   <!-- ====================================================================
-       UNIT #3: CSS STYLING (All in ONE single file)
+       UNIT #3: PURE CSS WITH GLASSMORPHISM & SMOOTH WORKFLOW
+       Zero JavaScript - 100% Native CSS
        ==================================================================== -->
   <style>
-    /* 1. Universal Selector (*) */
+    /* 1. Universal Selector & Smooth Scroll Workflow */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* 2. Body Styling */
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4f6f9;
-      color: #333333;
-      line-height: 1.6;
+    html {
+      scroll-behavior: smooth; /* Pure CSS Smooth Scrolling Workflow */
     }
 
-    /* 3. Header Section */
+    /* 2. Body Background with Fixed Gradient for Glassmorphism */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      color: #1e293b;
+      line-height: 1.6;
+      /* Vibrant fixed gradient background so frosted glass shines through */
+      background: radial-gradient(at 10% 10%, #fecaca 0px, transparent 45%),
+                  radial-gradient(at 90% 15%, #fed7aa 0px, transparent 40%),
+                  radial-gradient(at 85% 85%, #bfdbfe 0px, transparent 45%),
+                  radial-gradient(at 15% 90%, #fbcfe8 0px, transparent 40%),
+                  #f1f5f9;
+      background-attachment: fixed; /* Unit 3: Background Attachment */
+    }
+
+    /* 3. Header with Frosted Glassmorphism */
     header {
-      background-color: #b30000;
-      color: white;
+      background: rgba(179, 0, 0, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
       text-align: center;
-      padding: 22px 15px;
+      padding: 26px 15px;
+      box-shadow: 0 4px 20px rgba(179, 0, 0, 0.15);
     }
 
     header h1 {
-      color: white;
-      font-size: 2em;
-      text-shadow: 2px 2px 4px #000000; /* Text Shadow */
-      margin-bottom: 6px;
+      font-size: 2.1em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Text Shadow */
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
     }
 
     header p {
+      color: #ffe4e6;
       font-size: 1.05em;
-      color: #ffe6e6;
     }
 
-    /* 4. Navigation Bar */
+    /* 4. Sticky Glassmorphic Navigation Bar */
     nav {
-      background-color: #222222;
-      text-align: center;
-      padding: 12px;
       position: sticky;
-      top: 0;
+      top: 12px;
+      max-width: 820px;
+      margin: 12px auto;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      padding: 10px 18px;
+      z-index: 1000;
     }
 
     nav a {
-      color: white;
+      color: #881337;
       text-decoration: none;
-      margin: 0 14px;
+      margin: 0 10px;
       font-weight: bold;
-      font-size: 0.95em;
+      font-size: 0.9em;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      display: inline-block;
     }
 
     /* Pseudo-Class :hover */
     nav a:hover {
-      color: #ffcc00;
-      text-decoration: underline;
+      background: #b30000;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(179, 0, 0, 0.25);
     }
 
-    /* 5. Main Content Container (Div / Block layout) */
+    /* 5. Main Glassmorphic Container */
     main {
-      width: 85%;
-      max-width: 850px;
-      margin: 25px auto;
-      background-color: #ffffff;
-      padding: 30px;
-      border: 1px solid #dddddd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      width: 90%;
+      max-width: 860px;
+      margin: 20px auto 40px auto;
     }
 
-    /* 6. Sections & Grouping Selector (h1, h2, h3) */
+    /* 6. Glassmorphism Card Sections */
     section {
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #eeeeee;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 30px rgba(30, 41, 59, 0.06);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
     }
 
+    /* Pure CSS Workflow: Target Glow when navigated to via hash link */
+    section:target {
+      border-color: #b30000;
+      box-shadow: 0 0 0 4px rgba(179, 0, 0, 0.18), 0 12px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Headings */
     h2 {
-      color: #b30000;
-      border-bottom: 2px solid #b30000;
-      padding-bottom: 6px;
-      margin-bottom: 14px;
+      color: #990000;
+      border-bottom: 2px solid rgba(179, 0, 0, 0.25);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      font-size: 1.45em;
     }
 
     h3 {
-      color: #800000;
-      margin-top: 15px;
+      color: #881337;
+      margin-top: 16px;
       margin-bottom: 8px;
+      font-size: 1.15em;
     }
 
     /* Lists */
     ul, ol {
       margin-left: 25px;
-      margin-top: 8px;
       margin-bottom: 15px;
     }
 
-    /* Span Highlighter */
-    .highlight {
-      background-color: yellow;
-      color: #b30000;
-      font-weight: bold;
-      padding: 2px 6px;
+    li {
+      margin-bottom: 6px;
     }
 
-    /* 7. Table Styling with Colspan & Rowspan */
+    /* Highlighter Span */
+    .highlight {
+      background: rgba(254, 240, 138, 0.85);
+      color: #990000;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+    }
+
+    /* 7. Glassmorphic Table with Rowspan & Colspan */
     table {
       width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 18px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(8px);
     }
 
     caption {
       font-weight: bold;
       margin-bottom: 8px;
-      color: #b30000;
+      color: #990000;
     }
 
     th, td {
-      border: 1px solid #444444;
-      padding: 10px;
+      border: 1px solid rgba(203, 213, 225, 0.6);
+      padding: 12px;
       text-align: center;
     }
 
     th {
-      background-color: #b30000;
-      color: white;
+      background: #b30000;
+      color: #ffffff;
+      font-weight: 600;
     }
 
-    /* Table Row Hover */
-    tr:hover {
-      background-color: #ffe6e6;
+    /* Pseudo-Class tr:hover for Table Workflow */
+    tr:hover td {
+      background: rgba(254, 226, 226, 0.5);
     }
 
-    /* 8. Form Styling */
+    /* 8. Glassmorphic Form Styling */
     form {
-      background-color: #fafafa;
-      border: 1px solid #cccccc;
-      padding: 20px;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 22px;
+      margin-top: 12px;
     }
 
+    /* Form Inputs with Pure CSS Focus Glow */
     input[type="text"],
     input[type="tel"],
     select,
     textarea {
       width: 100%;
-      padding: 9px;
-      margin-top: 4px;
-      margin-bottom: 14px;
-      border: 1px solid #999999;
-      border-radius: 3px;
+      padding: 10px 14px;
+      margin-top: 6px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.85);
       font-family: inherit;
       font-size: 14px;
+      transition: all 0.25s ease;
     }
 
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: #b30000;
+      box-shadow: 0 0 0 3px rgba(179, 0, 0, 0.18);
+    }
+
+    /* Submit & Reset Button Controls */
     input[type="submit"] {
-      background-color: #b30000;
+      background: linear-gradient(135deg, #b30000 0%, #dc2626 100%);
       color: white;
-      padding: 10px 22px;
+      padding: 11px 24px;
       border: none;
-      border-radius: 4px;
+      border-radius: 25px;
       font-weight: bold;
       cursor: pointer;
       margin-right: 10px;
+      box-shadow: 0 4px 12px rgba(179, 0, 0, 0.25);
+      transition: all 0.25s ease;
     }
 
     input[type="submit"]:hover {
-      background-color: #800000;
+      background: linear-gradient(135deg, #800000 0%, #b30000 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(179, 0, 0, 0.35);
     }
 
     input[type="reset"] {
-      background-color: #666666;
+      background: rgba(100, 116, 139, 0.85);
       color: white;
-      padding: 10px 18px;
+      padding: 11px 20px;
       border: none;
-      border-radius: 4px;
+      border-radius: 25px;
       cursor: pointer;
+      transition: all 0.25s ease;
     }
 
-    /* 9. Aside Box (Helplines) */
+    input[type="reset"]:hover {
+      background: rgba(71, 85, 105, 1);
+    }
+
+    /* 9. Aside Glass Card */
     aside {
-      background-color: #fff2f2;
+      background: rgba(254, 242, 242, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(254, 202, 202, 0.8);
       border-left: 5px solid #b30000;
-      padding: 16px 20px;
-      margin-top: 25px;
-      border-radius: 4px;
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-top: 24px;
     }
 
-    /* 10. Footer */
+    aside a {
+      color: #990000;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    aside a:hover {
+      text-decoration: underline;
+    }
+
+    /* 10. Floating "Back to Top" Action Button (Pure CSS Workflow) */
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(179, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 10px 16px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.25s ease;
+      z-index: 999;
+    }
+
+    .back-to-top:hover {
+      background: #800000;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 11. Footer */
     footer {
-      background-color: #222222;
-      color: #ffffff;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      color: #cbd5e1;
       text-align: center;
-      padding: 20px;
-      margin-top: 30px;
+      padding: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     footer p {
       font-size: 0.95em;
-      color: #cccccc;
       margin-bottom: 5px;
     }
   </style>
 </head>
-<body>
+<body id="top">
 
   <!-- ====================================================================
        1. HEADER (Unit #2: Semantic Layout)
        ==================================================================== -->
-  <header>
+  <header id="header">
     <h1>Community Emergency Resource Directory</h1>
     <p>A Web Directory for Disaster Relief, Medical Aid &amp; Emergency Contacts</p>
   </header>
 
   <!-- ====================================================================
-       2. NAVIGATION BAR (Unit #1 & #2: Anchor Links & Nav)
+       2. GLASSMORPHIC NAVIGATION WORKFLOW (Unit #1 & #2: Anchor Links & Nav)
        ==================================================================== -->
   <nav>
     <a href="#about">About</a>
@@ -243,7 +359,7 @@
   </nav>
 
   <!-- ====================================================================
-       3. MAIN CONTENT (Unit #2: Main & Section)
+       3. MAIN GLASS CONTENT (Unit #2: Main & Section)
        ==================================================================== -->
   <main>
 
@@ -255,7 +371,7 @@
       </p>
       <p style="margin-top: 10px;">
         During emergencies, clean drinking water (H<sub>2</sub>O) and medical kits with safety level 10<sup>+</sup> are distributed. 
-        <br>
+        <br><br>
         <span class="highlight">Remember: For immediate life-saving assistance, dial 112 directly.</span>
       </p>
 
@@ -264,7 +380,7 @@
         <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" 
              alt="Emergency Medical Relief Team" 
              width="520" 
-             style="border: 2px solid #b30000; border-radius: 6px; max-width: 100%;">
+             style="border: 2px solid rgba(179, 0, 0, 0.5); border-radius: 12px; max-width: 100%; box-shadow: 0 6px 20px rgba(0,0,0,0.08);">
       </div>
     </section>
 
@@ -315,13 +431,13 @@
             <td>Civil Hospital Trauma Wing</td>
             <td>08:00 AM – 02:00 PM</td>
             <td>02:00 PM – 08:00 PM</td>
-            <td>0181-2223344</td>
+            <td><a href="tel:01812223344" style="color: #b30000; font-weight: bold;">0181-2223344</a></td>
           </tr>
           <tr>
             <td>Red Cross First-Aid Camp</td>
             <td>09:00 AM – 01:00 PM</td>
             <td>02:00 PM – 06:00 PM</td>
-            <td>9876543210</td>
+            <td><a href="tel:9876543210" style="color: #b30000; font-weight: bold;">9876543210</a></td>
           </tr>
 
           <!-- COLSPAN = 2: Food camp is open 24 hours (merges 2 columns) -->
@@ -329,7 +445,7 @@
             <td><b>Food &amp; Water</b></td>
             <td>Community Food Kitchen</td>
             <td colspan="2">Open 24 Hours (Continuous Relief Service)</td>
-            <td>1800-111-222</td>
+            <td><a href="tel:1800111222" style="color: #b30000; font-weight: bold;">1800-111-222</a></td>
           </tr>
 
           <tr>
@@ -337,7 +453,7 @@
             <td>Govt High School Shelter Ground</td>
             <td>06:00 AM – 12:00 PM</td>
             <td>12:00 PM – 10:00 PM</td>
-            <td>1070</td>
+            <td><a href="tel:1070" style="color: #b30000; font-weight: bold;">1070</a></td>
           </tr>
         </tbody>
       </table>
@@ -350,19 +466,19 @@
       <!-- Real Emergency Siren (WAV Audio) -->
       <h3>1. Emergency Alert Siren Tone</h3>
       <p>Official alternating tone used during disaster alert broadcasts:</p>
-      <audio controls style="margin-top: 8px;">
+      <audio controls style="margin-top: 10px; width: 100%; max-width: 450px;">
         <source src="alert.wav" type="audio/wav">
         Your browser does not support audio.
       </audio>
 
       <!-- Realistic Emergency First Aid Video (YouTube Embed via Iframe - Unit 1 Slide 69) -->
-      <h3 style="margin-top: 20px;">2. Emergency First Aid &amp; Safety Response Guide</h3>
+      <h3 style="margin-top: 22px;">2. Emergency First Aid &amp; Safety Response Guide</h3>
       <p>Essential video guide on emergency life-saving actions:</p>
       <iframe width="100%" 
-              height="300" 
+              height="315" 
               src="https://www.youtube.com/embed/ea1RJUOiNfQ" 
               title="First Aid and Emergency Response Training Video" 
-              style="border: 1px solid #ccc; border-radius: 4px; margin-top: 8px;" 
+              style="border: 1px solid rgba(255,255,255,0.8); border-radius: 12px; margin-top: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);" 
               allowfullscreen>
       </iframe>
     </section>
@@ -376,19 +492,19 @@
         
         <!-- Text Input with <label for=""> -->
         <p>
-          <label for="name"><b>Your Name / Facility Name:</b></label><br>
+          <label for="name"><b>Your Name / Facility Name:</b></label>
           <input type="text" id="name" name="name" placeholder="Enter your full name or facility" required>
         </p>
 
         <!-- Phone Input -->
         <p>
-          <label for="phone"><b>Contact Phone Number:</b></label><br>
+          <label for="phone"><b>Contact Phone Number:</b></label>
           <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" required>
         </p>
 
         <!-- Dropdown Box (<select> and <option>) -->
         <p>
-          <label for="zone"><b>Select Relief Zone:</b></label><br>
+          <label for="zone"><b>Select Relief Zone:</b></label>
           <select id="zone" name="zone">
             <option value="North">North Relief Zone</option>
             <option value="South">South Relief Zone</option>
@@ -398,39 +514,33 @@
         </p>
 
         <!-- Radio Buttons: Sharing SAME name="category" (Unit #2) -->
-        <p>
+        <p style="margin-top: 5px;">
           <b>Resource Category (Select One):</b><br>
-          <input type="radio" id="cat-med" name="category" value="Medical" checked>
-          <label for="cat-med">Medical Aid</label>
-          &nbsp;&nbsp;
-          <input type="radio" id="cat-she" name="category" value="Shelter">
-          <label for="cat-she">Shelter Camp</label>
-          &nbsp;&nbsp;
-          <input type="radio" id="cat-foo" name="category" value="Food">
-          <label for="cat-foo">Food &amp; Water</label>
+          <label><input type="radio" id="cat-med" name="category" value="Medical" checked> Medical Aid</label>
+          &nbsp;&nbsp;&nbsp;
+          <label><input type="radio" id="cat-she" name="category" value="Shelter"> Shelter Camp</label>
+          &nbsp;&nbsp;&nbsp;
+          <label><input type="radio" id="cat-foo" name="category" value="Food"> Food &amp; Water</label>
         </p>
 
         <!-- Checkboxes: Multi-select choices -->
-        <p style="margin-top: 10px;">
+        <p style="margin-top: 14px;">
           <b>Available Provisions (Check all that apply):</b><br>
-          <input type="checkbox" id="chk-amb" name="facility" value="Ambulance" checked>
-          <label for="chk-amb">Ambulance Van</label>
-          &nbsp;&nbsp;
-          <input type="checkbox" id="chk-bed" name="facility" value="Beds">
-          <label for="chk-bed">Emergency Beds</label>
-          &nbsp;&nbsp;
-          <input type="checkbox" id="chk-wat" name="facility" value="Water">
-          <label for="chk-wat">Drinking Water</label>
+          <label><input type="checkbox" id="chk-amb" name="facility" value="Ambulance" checked> Ambulance Van</label>
+          &nbsp;&nbsp;&nbsp;
+          <label><input type="checkbox" id="chk-bed" name="facility" value="Beds"> Emergency Beds</label>
+          &nbsp;&nbsp;&nbsp;
+          <label><input type="checkbox" id="chk-wat" name="facility" value="Water"> Drinking Water</label>
         </p>
 
         <!-- Textarea -->
-        <p style="margin-top: 10px;">
-          <label for="message"><b>Address or Special Requirements:</b></label><br>
+        <p style="margin-top: 14px;">
+          <label for="message"><b>Address or Special Requirements:</b></label>
           <textarea id="message" name="message" rows="3" cols="30" placeholder="Type location address or details..."></textarea>
         </p>
 
         <!-- Submit and Reset Buttons -->
-        <p style="margin-top: 15px;">
+        <p style="margin-top: 18px;">
           <input type="submit" value="Register Listing">
           <input type="reset" value="Clear Form">
         </p>
@@ -441,13 +551,16 @@
     <!-- ASIDE (Unit #2: Semantic Aside) -->
     <aside id="contact">
       <h3>Quick Emergency Helplines</h3>
-      <p>National Emergency Service: <b><a href="tel:112">112</a></b></p>
+      <p style="margin-top: 6px;">National Emergency Service: <b><a href="tel:112">112</a></b></p>
       <p>Ambulance Service: <b><a href="tel:108">108</a></b></p>
       <p>Disaster Management Helpline: <b><a href="tel:1070">1070</a></b></p>
-      <p>Official Website: <a href="https://ndma.gov.in" target="_blank">National Disaster Authority (NDMA)</a></p>
+      <p style="margin-top: 8px;">Official Website: <a href="https://ndma.gov.in" target="_blank">National Disaster Authority (NDMA)</a></p>
     </aside>
 
   </main>
+
+  <!-- Pure CSS Floating "Back to Top" Button for smooth workflow -->
+  <a href="#top" class="back-to-top" title="Scroll back to top">↑ Top</a>
 
   <!-- ====================================================================
        4. FOOTER (Unit #2: Semantic Footer)

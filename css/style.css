@@ -1,121 +1,163 @@
 /* ==========================================================================
-   CSE326 Unit #3: Simple CSS Stylesheet (100% Pure CSS - No JavaScript)
+   CSE326 Unit #3: Glassmorphic CSS Stylesheet (100% Pure CSS - No JavaScript)
    Project: Community Emergency Resource Directory
    Student: Shivansh Sharma (Reg: 12611232, Roll: 48, Section: K4P26XP)
    ========================================================================== */
 
-/* Universal Selector */
+/* 1. Universal Selector & Smooth Scroll Workflow */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body Styling */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f7f9fc;
-  color: #333333;
-  line-height: 1.6;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Header */
+/* 2. Body with Fixed Radial Mesh Background */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  color: #1e293b;
+  line-height: 1.6;
+  background: radial-gradient(at 10% 10%, #fecaca 0px, transparent 45%),
+              radial-gradient(at 90% 15%, #fed7aa 0px, transparent 40%),
+              radial-gradient(at 85% 85%, #bfdbfe 0px, transparent 45%),
+              radial-gradient(at 15% 90%, #fbcfe8 0px, transparent 40%),
+              #f1f5f9;
+  background-attachment: fixed;
+}
+
+/* 3. Frosted Glass Header */
 header {
-  background-color: #b30000;
-  color: white;
+  background: rgba(179, 0, 0, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   text-align: center;
-  padding: 20px;
+  padding: 26px 15px;
+  box-shadow: 0 4px 20px rgba(179, 0, 0, 0.15);
 }
 
 header h1 {
-  color: white;
-  text-shadow: 2px 2px 4px #000000;
+  font-size: 2.1em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   margin-bottom: 5px;
 }
 
-/* Navigation Bar */
+/* 4. Sticky Glassmorphic Navigation Bar */
 nav {
-  background-color: #222222;
+  position: sticky;
+  top: 12px;
+  max-width: 820px;
+  margin: 12px auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   text-align: center;
-  padding: 10px;
+  padding: 10px 18px;
+  z-index: 1000;
 }
 
 nav a {
-  color: white;
+  color: #881337;
   text-decoration: none;
-  margin: 0 12px;
+  margin: 0 10px;
   font-weight: bold;
+  font-size: 0.9em;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  display: inline-block;
 }
 
 nav a:hover {
-  color: #ffcc00;
-  text-decoration: underline;
+  background: #b30000;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(179, 0, 0, 0.25);
 }
 
-/* Main Container */
+/* 5. Main Glass Card Container */
 main {
-  width: 80%;
-  max-width: 850px;
-  margin: 20px auto;
-  background-color: white;
-  padding: 25px;
-  border: 1px solid #dddddd;
+  width: 90%;
+  max-width: 860px;
+  margin: 20px auto 40px auto;
 }
 
-/* Sections */
 section {
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eeeeee;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.06);
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
 }
 
-/* Headings */
-h1, h2, h3 {
-  color: #b30000;
-  margin-bottom: 8px;
+section:target {
+  border-color: #b30000;
+  box-shadow: 0 0 0 4px rgba(179, 0, 0, 0.18), 0 12px 35px rgba(0, 0, 0, 0.08);
 }
 
-/* Lists */
-ul, ol {
-  margin-left: 25px;
+h2 {
+  color: #990000;
+  border-bottom: 2px solid rgba(179, 0, 0, 0.25);
+  padding-bottom: 8px;
   margin-bottom: 15px;
 }
 
-/* Highlight Span */
+/* Highlighter Span */
 .highlight {
-  background-color: yellow;
-  color: #b30000;
+  background: rgba(254, 240, 138, 0.85);
+  color: #990000;
   font-weight: bold;
-  padding: 2px 5px;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
-/* Table Styling with Colspan & Rowspan */
+/* Glassmorphic Table */
 table {
   width: 100%;
-  border-collapse: collapse;
-  margin: 15px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 18px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
 }
 
 th, td {
-  border: 1px solid #333333;
-  padding: 10px;
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  padding: 12px;
   text-align: center;
 }
 
 th {
-  background-color: #b30000;
-  color: white;
+  background: #b30000;
+  color: #ffffff;
 }
 
-tr:hover {
-  background-color: #ffe6e6;
+tr:hover td {
+  background: rgba(254, 226, 226, 0.5);
 }
 
-/* Form Styling */
+/* Glassmorphic Form */
 form {
-  background-color: #fafafa;
-  border: 1px solid #cccccc;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  padding: 22px;
 }
 
 input[type="text"],
@@ -123,50 +165,63 @@ input[type="tel"],
 select,
 textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #888888;
+  padding: 10px 14px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #b30000;
+  box-shadow: 0 0 0 3px rgba(179, 0, 0, 0.18);
 }
 
 input[type="submit"] {
-  background-color: #b30000;
+  background: linear-gradient(135deg, #b30000 0%, #dc2626 100%);
   color: white;
-  padding: 8px 16px;
+  padding: 11px 24px;
   border: none;
+  border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
   margin-right: 10px;
 }
 
-input[type="submit"]:hover {
-  background-color: #800000;
-}
-
 input[type="reset"] {
-  background-color: #666666;
+  background: rgba(100, 116, 139, 0.85);
   color: white;
-  padding: 8px 16px;
+  padding: 11px 20px;
   border: none;
+  border-radius: 25px;
   cursor: pointer;
 }
 
-/* Aside Box */
-aside {
-  background-color: #fff2f2;
-  border-left: 4px solid #b30000;
-  padding: 12px 16px;
-  margin-top: 20px;
-}
-
-/* Footer */
-footer {
-  background-color: #222222;
+/* Floating Action Button (Pure CSS) */
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: rgba(179, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
   color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-footer p {
-  font-size: 0.9em;
+footer {
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 24px;
 }
