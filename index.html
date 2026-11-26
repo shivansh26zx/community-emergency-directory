@@ -1,100 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ====================================================================
+       CSE326: INTERNET PROGRAMMING PROJECT
+       Title: Community Emergency Resource Directory
+       Student: Shivansh Sharma | Reg No: 12611232 | Roll No: 48 | Section: K4P26XP
+       ==================================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Shivansh Sharma">
-  <meta name="description" content="Community Emergency Resource Directory - CSE326 Project">
+  <meta name="description" content="Community Emergency Resource Directory - Built using HTML5 and CSS3 for CSE326">
   <title>Community Emergency Resource Directory</title>
-  
-  <!-- External CSS (Unit 3) -->
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ====================================================================
+       UNIT #3: CSS STYLING (All in ONE single file)
+       ==================================================================== -->
+  <style>
+    /* 1. Universal Selector (*) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 2. Body Styling */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f9;
+      color: #333333;
+      line-height: 1.6;
+    }
+
+    /* 3. Header Section */
+    header {
+      background-color: #b30000;
+      color: white;
+      text-align: center;
+      padding: 22px 15px;
+    }
+
+    header h1 {
+      color: white;
+      font-size: 2em;
+      text-shadow: 2px 2px 4px #000000; /* Text Shadow */
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 1.05em;
+      color: #ffe6e6;
+    }
+
+    /* 4. Navigation Bar */
+    nav {
+      background-color: #222222;
+      text-align: center;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: bold;
+      font-size: 0.95em;
+    }
+
+    /* Pseudo-Class :hover */
+    nav a:hover {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
+
+    /* 5. Main Content Container (Div / Block layout) */
+    main {
+      width: 85%;
+      max-width: 850px;
+      margin: 25px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border: 1px solid #dddddd;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* 6. Sections & Grouping Selector (h1, h2, h3) */
+    section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    h2 {
+      color: #b30000;
+      border-bottom: 2px solid #b30000;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      color: #800000;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 25px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+    }
+
+    /* Span Highlighter */
+    .highlight {
+      background-color: yellow;
+      color: #b30000;
+      font-weight: bold;
+      padding: 2px 6px;
+    }
+
+    /* 7. Table Styling with Colspan & Rowspan */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #b30000;
+    }
+
+    th, td {
+      border: 1px solid #444444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #b30000;
+      color: white;
+    }
+
+    /* Table Row Hover */
+    tr:hover {
+      background-color: #ffe6e6;
+    }
+
+    /* 8. Form Styling */
+    form {
+      background-color: #fafafa;
+      border: 1px solid #cccccc;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px;
+      margin-top: 4px;
+      margin-bottom: 14px;
+      border: 1px solid #999999;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    input[type="submit"] {
+      background-color: #b30000;
+      color: white;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #800000;
+    }
+
+    input[type="reset"] {
+      background-color: #666666;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* 9. Aside Box (Helplines) */
+    aside {
+      background-color: #fff2f2;
+      border-left: 5px solid #b30000;
+      padding: 16px 20px;
+      margin-top: 25px;
+      border-radius: 4px;
+    }
+
+    /* 10. Footer */
+    footer {
+      background-color: #222222;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      font-size: 0.95em;
+      color: #cccccc;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ==========================================
-       1. HEADER (Unit 2: Semantic Header)
-       ========================================== -->
+  <!-- ====================================================================
+       1. HEADER (Unit #2: Semantic Layout)
+       ==================================================================== -->
   <header>
     <h1>Community Emergency Resource Directory</h1>
-    <p>A Simple Web Directory for Disaster Relief &amp; Emergency Medical Aid</p>
+    <p>A Web Directory for Disaster Relief, Medical Aid &amp; Emergency Contacts</p>
   </header>
 
-  <!-- ==========================================
-       2. NAVIGATION BAR (Unit 1 & 2: Anchor Links & Nav)
-       ========================================== -->
+  <!-- ====================================================================
+       2. NAVIGATION BAR (Unit #1 & #2: Anchor Links & Nav)
+       ==================================================================== -->
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#centers">Emergency Centers</a>
     <a href="#media">Audio &amp; Video</a>
-    <a href="#register">Register</a>
-    <a href="#contact">Contact</a>
+    <a href="#register">Register Resource</a>
+    <a href="#contact">Helplines</a>
   </nav>
 
-  <!-- ==========================================
-       3. MAIN CONTENT (Unit 2: Main Container)
-       ========================================== -->
+  <!-- ====================================================================
+       3. MAIN CONTENT (Unit #2: Main & Section)
+       ==================================================================== -->
   <main>
 
-    <!-- SECTION 1: ABOUT US & HIGHLIGHTS -->
+    <!-- SECTION 1: ABOUT DIRECTORY -->
     <section id="about">
-      <h2>About Our Directory</h2>
+      <h2>About Our Emergency Directory</h2>
       <p>
-        Welcome to the <strong>Community Emergency Resource Directory</strong>. 
-        This website helps citizens quickly find safe emergency shelters, hospitals, and clean drinking water during disasters.
+        The <strong>Community Emergency Resource Directory</strong> connects citizens, disaster relief volunteers, and families with verified emergency relief centers during floods, earthquakes, or medical crises.
       </p>
-      <p>
-        Always remember: <span class="highlight">In any life-threatening emergency, call 112 immediately.</span>
+      <p style="margin-top: 10px;">
+        During emergencies, clean drinking water (H<sub>2</sub>O) and medical kits with safety level 10<sup>+</sup> are distributed. 
+        <br>
+        <span class="highlight">Remember: For immediate life-saving assistance, dial 112 directly.</span>
       </p>
-      <br>
-      <div style="text-align: center;">
-        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=500&q=80" 
-             alt="Emergency Relief Team" 
-             width="450">
+
+      <!-- Image (Unit #1) -->
+      <div style="text-align: center; margin-top: 20px;">
+        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" 
+             alt="Emergency Medical Relief Team" 
+             width="520" 
+             style="border: 2px solid #b30000; border-radius: 6px; max-width: 100%;">
       </div>
     </section>
 
-    <!-- SECTION 2: SERVICES & LISTS -->
+    <!-- SECTION 2: SERVICES & LISTS (Unit #1) -->
     <section id="services">
       <h2>Emergency Services &amp; Action Steps</h2>
-      
-      <!-- Unordered List (Unit 1) -->
+
+      <!-- Unordered List (<ul>) -->
       <h3>Available Relief Services:</h3>
       <ul>
-        <li>24/7 Emergency Hospital &amp; Medical Care</li>
-        <li>Temporary Evacuation Shelters &amp; Beds</li>
-        <li>Clean Drinking Water &amp; Food Supplies</li>
+        <li>24/7 Critical Trauma Hospital Care &amp; Ambulances</li>
+        <li>Disaster Safe Shelters with Clean Beds &amp; Blankets</li>
+        <li>Food Relief Kitchens &amp; Packaged Drinking Water</li>
       </ul>
 
-      <!-- Ordered List (Unit 1) -->
-      <h3 style="margin-top: 15px;">Steps to Follow in an Emergency:</h3>
+      <!-- Ordered List (<ol>) -->
+      <h3>Steps to Follow in an Emergency:</h3>
       <ol>
-        <li>Move to a safe open ground or community shelter.</li>
-        <li>Contact the nearest helpline from the schedule below.</li>
-        <li>Follow instructions given by disaster relief officers.</li>
+        <li>Move to an open ground or the nearest community shelter.</li>
+        <li>Contact the local center helpline from the table below.</li>
+        <li>Follow instructions issued by official disaster relief workers.</li>
       </ol>
     </section>
 
-    <!-- SECTION 3: TABLE WITH ROWSPAN & COLSPAN -->
+    <!-- SECTION 3: TABLE WITH ROWSPAN & COLSPAN (Unit #1) -->
     <section id="centers">
-      <h2>Active Emergency Centers &amp; Schedule</h2>
+      <h2>Active Emergency Centers &amp; Timings</h2>
+      <p>This table demonstrates table headers, borders, <strong>rowspan</strong>, and <strong>colspan</strong>:</p>
+
       <table border="1">
-        <caption>Emergency Schedule &amp; Center Availability</caption>
+        <caption>Table 1.1: Verified Relief Centers Schedule</caption>
         <thead>
           <tr>
             <th rowspan="2">Category</th>
             <th rowspan="2">Center Name</th>
-            <th colspan="2">Timings</th>
+            <th colspan="2">Operational Hours</th>
             <th rowspan="2">Contact Phone</th>
           </tr>
           <tr>
-            <th>Morning</th>
-            <th>Evening</th>
+            <th>Morning Shift</th>
+            <th>Evening Shift</th>
           </tr>
         </thead>
         <tbody>
-          <!-- ROWSPAN = 2 (Medical Aid covers 2 centers) -->
+          <!-- ROWSPAN = 2: Medical Aid covers two centers across rows -->
           <tr>
             <td rowspan="2"><b>Medical Aid</b></td>
             <td>Civil Hospital Trauma Wing</td>
@@ -103,17 +318,17 @@
             <td>0181-2223344</td>
           </tr>
           <tr>
-            <td>Red Cross First-Aid Clinic</td>
+            <td>Red Cross First-Aid Camp</td>
             <td>09:00 AM – 01:00 PM</td>
             <td>02:00 PM – 06:00 PM</td>
             <td>9876543210</td>
           </tr>
 
-          <!-- COLSPAN = 2 (Food camp open all day) -->
+          <!-- COLSPAN = 2: Food camp is open 24 hours (merges 2 columns) -->
           <tr>
             <td><b>Food &amp; Water</b></td>
             <td>Community Food Kitchen</td>
-            <td colspan="2">Open 24 Hours Daily</td>
+            <td colspan="2">Open 24 Hours (Continuous Relief Service)</td>
             <td>1800-111-222</td>
           </tr>
 
@@ -128,50 +343,52 @@
       </table>
     </section>
 
-    <!-- SECTION 4: MULTIMEDIA (AUDIO, VIDEO, IFRAME) -->
+    <!-- SECTION 4: REAL EMERGENCY AUDIO & VIDEO (Unit #1) -->
     <section id="media">
       <h2>Emergency Audio &amp; Video Advisory</h2>
-      
-      <!-- Audio Element (Unit 1) -->
-      <h3>1. Emergency Siren Alert:</h3>
-      <audio controls>
-        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+
+      <!-- Real Emergency Siren (WAV Audio) -->
+      <h3>1. Emergency Alert Siren Tone</h3>
+      <p>Official alternating tone used during disaster alert broadcasts:</p>
+      <audio controls style="margin-top: 8px;">
+        <source src="alert.wav" type="audio/wav">
         Your browser does not support audio.
       </audio>
 
-      <!-- Video Element (Unit 1) -->
-      <h3 style="margin-top: 15px;">2. Disaster Safety Video:</h3>
-      <video controls width="380">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
-
-      <!-- Iframe Element (Unit 1) -->
-      <h3 style="margin-top: 15px;">3. Center Location Map:</h3>
-      <iframe src="https://maps.google.com/maps?q=Civil%20Hospital%20Jalandhar&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-              width="100%" 
-              height="240" 
-              style="border: 1px solid #ccc;">
+      <!-- Realistic Emergency First Aid Video (YouTube Embed via Iframe - Unit 1 Slide 69) -->
+      <h3 style="margin-top: 20px;">2. Emergency First Aid &amp; Safety Response Guide</h3>
+      <p>Essential video guide on emergency life-saving actions:</p>
+      <iframe width="100%" 
+              height="300" 
+              src="https://www.youtube.com/embed/ea1RJUOiNfQ" 
+              title="First Aid and Emergency Response Training Video" 
+              style="border: 1px solid #ccc; border-radius: 4px; margin-top: 8px;" 
+              allowfullscreen>
       </iframe>
     </section>
 
-    <!-- SECTION 5: FORM (Unit 2: Forms) -->
+    <!-- SECTION 5: REGISTRATION FORM (Unit #2: Forms) -->
     <section id="register">
-      <h2>Register Resource or Volunteer</h2>
+      <h2>Register Resource or Request Help</h2>
+      <p>Use this form to add an emergency center or register as a crisis volunteer:</p>
+
       <form action="registered.html" method="GET">
         
+        <!-- Text Input with <label for=""> -->
         <p>
-          <label for="name"><b>Name / Organization:</b></label><br>
-          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          <label for="name"><b>Your Name / Facility Name:</b></label><br>
+          <input type="text" id="name" name="name" placeholder="Enter your full name or facility" required>
         </p>
 
+        <!-- Phone Input -->
         <p>
-          <label for="phone"><b>Phone Number:</b></label><br>
-          <input type="tel" id="phone" name="phone" placeholder="Enter contact number" required>
+          <label for="phone"><b>Contact Phone Number:</b></label><br>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" required>
         </p>
 
+        <!-- Dropdown Box (<select> and <option>) -->
         <p>
-          <label for="zone"><b>Select Zone:</b></label><br>
+          <label for="zone"><b>Select Relief Zone:</b></label><br>
           <select id="zone" name="zone">
             <option value="North">North Relief Zone</option>
             <option value="South">South Relief Zone</option>
@@ -180,65 +397,65 @@
           </select>
         </p>
 
-        <!-- Radio Buttons (Same name="category") -->
+        <!-- Radio Buttons: Sharing SAME name="category" (Unit #2) -->
         <p>
-          <b>Resource Category:</b><br>
-          <input type="radio" id="medical" name="category" value="Medical" checked>
-          <label for="medical">Medical Aid</label>
+          <b>Resource Category (Select One):</b><br>
+          <input type="radio" id="cat-med" name="category" value="Medical" checked>
+          <label for="cat-med">Medical Aid</label>
           &nbsp;&nbsp;
-          <input type="radio" id="shelter" name="category" value="Shelter">
-          <label for="shelter">Shelter</label>
+          <input type="radio" id="cat-she" name="category" value="Shelter">
+          <label for="cat-she">Shelter Camp</label>
           &nbsp;&nbsp;
-          <input type="radio" id="food" name="category" value="Food">
-          <label for="food">Food &amp; Water</label>
+          <input type="radio" id="cat-foo" name="category" value="Food">
+          <label for="cat-foo">Food &amp; Water</label>
         </p>
 
-        <!-- Checkboxes -->
+        <!-- Checkboxes: Multi-select choices -->
         <p style="margin-top: 10px;">
-          <b>Available Facilities:</b><br>
-          <input type="checkbox" id="ambulance" name="facility" value="Ambulance" checked>
-          <label for="ambulance">Ambulance</label>
+          <b>Available Provisions (Check all that apply):</b><br>
+          <input type="checkbox" id="chk-amb" name="facility" value="Ambulance" checked>
+          <label for="chk-amb">Ambulance Van</label>
           &nbsp;&nbsp;
-          <input type="checkbox" id="beds" name="facility" value="Beds">
-          <label for="beds">Emergency Beds</label>
+          <input type="checkbox" id="chk-bed" name="facility" value="Beds">
+          <label for="chk-bed">Emergency Beds</label>
           &nbsp;&nbsp;
-          <input type="checkbox" id="water" name="facility" value="Water">
-          <label for="water">Drinking Water</label>
+          <input type="checkbox" id="chk-wat" name="facility" value="Water">
+          <label for="chk-wat">Drinking Water</label>
         </p>
 
         <!-- Textarea -->
         <p style="margin-top: 10px;">
-          <label for="message"><b>Address or Notes:</b></label><br>
-          <textarea id="message" name="message" rows="3" cols="30" placeholder="Enter address or notes..."></textarea>
+          <label for="message"><b>Address or Special Requirements:</b></label><br>
+          <textarea id="message" name="message" rows="3" cols="30" placeholder="Type location address or details..."></textarea>
         </p>
 
-        <!-- Submit & Reset Buttons -->
+        <!-- Submit and Reset Buttons -->
         <p style="margin-top: 15px;">
-          <input type="submit" value="Register Now">
-          <input type="reset" value="Reset Form">
+          <input type="submit" value="Register Listing">
+          <input type="reset" value="Clear Form">
         </p>
 
       </form>
     </section>
 
-    <!-- ASIDE (Unit 2: Aside) -->
+    <!-- ASIDE (Unit #2: Semantic Aside) -->
     <aside id="contact">
       <h3>Quick Emergency Helplines</h3>
-      <p>National Emergency: <b><a href="tel:112">112</a></b></p>
+      <p>National Emergency Service: <b><a href="tel:112">112</a></b></p>
       <p>Ambulance Service: <b><a href="tel:108">108</a></b></p>
-      <p>Disaster Control Room: <b><a href="tel:1070">1070</a></b></p>
-      <p>Official Website: <a href="https://ndma.gov.in" target="_blank">National Disaster Management Authority</a></p>
+      <p>Disaster Management Helpline: <b><a href="tel:1070">1070</a></b></p>
+      <p>Official Website: <a href="https://ndma.gov.in" target="_blank">National Disaster Authority (NDMA)</a></p>
     </aside>
 
   </main>
 
-  <!-- ==========================================
-       4. FOOTER (Unit 2: Semantic Footer)
-       ========================================== -->
+  <!-- ====================================================================
+       4. FOOTER (Unit #2: Semantic Footer)
+       ==================================================================== -->
   <footer>
-    <p><b>Community Emergency Resource Directory</b> | CSE326 Project</p>
+    <p><b>Community Emergency Resource Directory</b> | CSE326 Internet Programming</p>
     <p>Student Name: <strong>Shivansh Sharma</strong> | Reg No: <strong>12611232</strong> | Roll No: <strong>48</strong> | Section: <strong>K4P26XP</strong></p>
-    <p>&copy; 2026 Lovely Professional University</p>
+    <p>&copy; 2026 Lovely Professional University. All Rights Reserved.</p>
   </footer>
 
 </body>
