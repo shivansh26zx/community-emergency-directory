@@ -1,97 +1,119 @@
 # 🚨 Community Emergency Resource Directory
 
 > **Course:** CSE326 – Internet & Web Programming  
-> **Academic Year:** 2026  
-> **Project Type:** Frontend Web Application (Client-Side)  
+> **Student Name:** Shivansh Sharma  
+> **Registration No:** 12611232 | **Roll No:** 48 | **Section:** K4P26XP  
 > **🌐 Live GitHub Pages:** [https://shivansh26zx.github.io/community-emergency-directory/](https://shivansh26zx.github.io/community-emergency-directory/)  
-> **⚡ Live Vercel Demo:** [https://community-emergency-directory.vercel.app](https://community-emergency-directory.vercel.app)  
-> **🔐 Admin PIN:** `1234`
+> **⚡ Live Vercel Mirror:** [https://community-emergency-directory.vercel.app](https://community-emergency-directory.vercel.app)  
+> **📂 GitHub Repository:** [https://github.com/shivansh26zx/community-emergency-directory](https://github.com/shivansh26zx/community-emergency-directory)  
 
 ---
 
-## 👨‍🎓 Student Details (Fill before submission)
-- **Student Name:** Shivansh Sharma
-- **Registration No:** 12611232
-- **Roll No / Section:** 48 / K4P26XP
-- **Course Code:** CSE326 (Internet & Web Programming)
+## 🎯 Project Overview & Objective
+The **Community Emergency Resource Directory** is a clean, accessible, and responsive crisis response website designed to connect citizens, relief volunteers, and emergency response workers with vital services (trauma hospitals, disaster shelters, clean water camps, and dispatch helplines).
+
+The entire project has been restructured to strictly demonstrate the theoretical and practical concepts taught across **Unit #1, Unit #2, and Unit #3** of the CSE326 curriculum. Every tag, attribute, and style rule maps directly to the syllabus so it can be easily explained during class viva and laboratory evaluation.
 
 ---
 
-## 📌 Project Overview
-The **Community Emergency Resource Directory** is a web-based crisis response portal designed to help citizens and disaster response volunteers quickly discover, locate, and contact essential relief services (Emergency Medical Aid, Disaster Shelters, Clean Food & Water Camps, and 24x7 Helplines).
+## 📚 Syllabus Alignment & Defense Guide (Units 1, 2, and 3)
 
-The project combines **interactive geographic mapping (Leaflet.js)** with **real-time filtering**, **client-side data persistence (`localStorage`)**, and an **authenticated Admin Portal protected by a Security PIN**.
-
----
-
-## 🌟 Key Features
-
-### 1. 🌐 Public Portal (`index.html`)
-- **Interactive OpenStreetMap Integration:** Visualizes emergency centers with interactive pins and detailed popups using Leaflet.js.
-- **GPS Location Detection:** One-click *"My Location"* button utilizing the HTML5 Geolocation API (`navigator.geolocation`).
-- **Live Multi-Criteria Filtering:** Simultaneous filtering by:
-  - Keyword search (name, contact, or category)
-  - Category dropdown (Shelter, Medical, Food & Water, Helpline)
-  - Real-time availability status (Available, Limited, Full)
-  - One-click **"Reset"** button to clear filters.
-- **Emergency Summary Counters:** Dynamic statistics showing total available facilities, hospitals, and relief camps.
-- **24x7 National Helpline Strip:** One-touch quick dial hotlines (112 Emergency, 108 Ambulance, 101 Fire, 1070 Disaster).
-- **Responsive Card Grid:** Smooth hover lift animations and instant *"View on Map"* pan-and-zoom triggers.
-
-### 2. 🔐 Admin Management Portal (`admin.html`)
-- **Security PIN Authorization:** Restricted access screen requiring a 4-digit PIN.
-  - **Default Admin PIN:** `1234`
-  - Wrong PIN triggers a CSS keyframe shake animation and error feedback.
-  - Session state maintained using `sessionStorage` with a manual *"Lock Portal"* button.
-- **Full CRUD Management:**
-  - **Create:** Add new emergency centers with auto-validation.
-  - **Read:** Live administrative data table.
-  - **Update:** Switch availability status dropdowns and toggle verification badges.
-  - **Delete:** Remove outdated listings with confirmation prompt.
-- **Client-Side Form Validation:**
-  - JavaScript Regex verification for contact numbers.
-  - Numerical range boundary verification for coordinates (Latitude: -90° to 90°, Longitude: -180° to 180°).
-  - Bootstrap visual feedback states (`is-valid` / `is-invalid`).
-- **Data Export & Demo Reset:**
-  - **📥 Export JSON:** Download the live listings as a `.json` backup file.
-  - **🔄 Reset Demo Data:** One-click button to restore initial sample hospitals, shelters, and relief camps.
-
----
-
-## 🛠️ Technology Stack
-- **Structure:** Semantic HTML5 (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
-- **Styling:** CSS3 (Custom Variables, Flexbox, CSS Grid, `@keyframes` Animations, Hover Transitions) + Bootstrap 5.3 CDN
-- **Scripting:** Pure JavaScript ES6+ (DOM manipulation, Arrow Functions, Array Methods: `map`, `filter`, `find`)
-- **Mapping Library:** Leaflet.js v1.9.4 & OpenStreetMap Tiles
-- **Storage & APIs:** HTML5 Web Storage API (`localStorage` & `sessionStorage`), HTML5 Geolocation API
+### 1️⃣ Unit #1: HTML5 Fundamentals
+* **Document Structure & Metadata:**
+  * `<!DOCTYPE html>`: HTML5 document type declaration.
+  * `<html lang="en">`: Declares language for accessibility.
+  * `<head>` with `<meta charset="UTF-8">`, `<meta name="viewport">` (responsive scaling), `<meta name="author">`, `<meta name="description">`, `<meta name="keywords">`.
+* **Headings & Text Hierarchy:**
+  * Headings `<h1>` down to `<h6>` following proper SEO hierarchy.
+  * Paragraphs `<p>`, line breaks `<br>`, and thematic horizontal rules `<hr>`.
+* **Text Formatting Elements:**
+  * `<b>` & `<strong>` (bold / important text).
+  * `<i>` & `<em>` (italic / emphasized text).
+  * `<mark>` (highlighted text), `<small>` (disclaimer text).
+  * `<del>` (deleted text) and `<ins>` (inserted text).
+  * `<sup>` (superscript, e.g., pH 7<sup>+</sup>) and `<sub>` (subscript, e.g., H<sub>2</sub>O).
+* **Quotations & Citations:**
+  * `<blockquote>` (with `cite="..."` attribute for official NDMA guideline quote).
+  * `<q>` (inline quotation) and `<cite>` (creative work citation).
+  * `<abbr title="...">` (e.g., `<abbr title="Community Emergency Response Team">CERT</abbr>`).
+  * `<dfn>` (defining term: Emergency Evacuation Zone).
+* **Lists:**
+  * **Unordered List (`<ul type="square">`):** Emergency supply kit essentials.
+  * **Ordered List (`<ol type="1">`):** Step-by-step crisis evacuation procedures.
+  * **Description List (`<dl>`, `<dt>`, `<dd>`):** Crisis terms (Triage, Disaster Shelter, Trauma Relief Wing).
+* **Hyperlinks (`<a>`):**
+  * `target="_blank"` with `title` for external tabs.
+  * Internal bookmark anchors (`href="#about"`, `href="#schedule"`, `href="#register"`).
+  * Special protocols: `tel:112` and `mailto:emergency.relief@community.org`.
+* **Images & Figures:**
+  * `<figure>` with `<img>` (`src`, `alt`, `width`, `height`) and `<figcaption>`.
+* **HTML Table with `colspan` and `rowspan`:**
+  * `<table>` with `<caption>`, `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<th>`, `<td>`.
+  * **`rowspan="2"`:** Merges Category cell across multiple facility rows (e.g., Medical Aid covers Civil Hospital and Apex Relief).
+  * **`colspan="2"`:** Merges Operational Hours across morning and night shifts.
+* **Multimedia Elements:**
+  * `<audio controls>`: Emergency siren audio broadcast with `<source>` and fallback text.
+  * `<video controls width="100%">`: Disaster safety guidelines video with `<source>` and fallback text.
+  * `<iframe>`: Embedded interactive emergency map window.
+* **Scalable Vector Graphics (SVG):**
+  * Embedded `<svg>` container drawing an official vector relief badge using `<rect>`, `<circle>`, `<line>`, and `<text>`.
 
 ---
 
-## 📂 Project Structure
-```text
-HTML Project/
-│
-├── index.html          # Public directory portal with map & search
-├── admin.html          # Admin portal protected with Security PIN
-├── 15.html             # Student Performance Dashboard
-├── README.md           # Project documentation & evaluation guide
-│
-├── css/
-│   └── styles.css      # Custom styling, animations & PIN overlay
-│
-└── js/
-    ├── data.js         # Default dataset & localStorage initialization
-    ├── map.js          # Leaflet.js map setup, markers & geolocation
-    ├── app.js          # Public directory rendering, search & filters
-    └── admin.js        # Admin PIN auth, form validation & CRUD actions
-```
+### 2️⃣ Unit #2: Semantic Layout, Accessibility & Forms
+* **Semantic Page Architecture:**
+  * `<header>`: Page introduction and main title.
+  * `<nav>`: Primary navigation section.
+  * `<main>`: Unique central content area (strictly one per page).
+  * `<section>`: Thematic groupings of content.
+  * `<article>`: Self-contained announcements.
+  * `<aside>`: Related sidebar containing direct dispatch hotline numbers.
+  * `<footer>`: Copyright, course credentials, and `<address>` contact tag.
+* **Accessibility Fundamentals:**
+  * Descriptive `alt` text on images for screen readers.
+  * Every `<label for="element_id">` explicitly binds to its `<input id="element_id">`.
+* **Comprehensive Emergency Registration Form (`<form>`):**
+  * `action="registered.html"` and `method="GET"`.
+  * `<input type="text">`, `type="email"`, `type="tel"`.
+  * **Radio Button Groups:** Grouped by identical `name="resource_category"` ensuring only one radio option can be checked.
+  * **Checkboxes:** Multi-select checkboxes for provisions (Ambulance, Oxygen, Clean Water, Power Backup).
+  * **Dropdown Menu:** `<select>` with `<option>` elements for relief zones.
+  * **Textarea:** `<textarea rows="4" cols="40">` for multi-line physical directions.
+  * **File Upload:** `<input type="file">` for ID/permit uploads.
+  * **Action Buttons:** `<input type="submit">`, `<input type="reset">`, and `<button type="submit">`.
 
 ---
 
-## 🚀 How to Run the Project
-1. Open the project folder on your computer.
-2. Double-click **`index.html`** to launch the Public Portal in any modern web browser (Chrome, Edge, Safari, Firefox).
-3. To access the Admin Dashboard, click **"Admin Dashboard"** in the navigation bar.
-4. When prompted by the Security Lock screen:
-   - **PIN:** `1234`
-   - Click **Unlock Portal**.
+### 3️⃣ Unit #3: Cascading Style Sheets (CSS)
+* **Types of CSS Applied:**
+  * **External CSS:** Main styling cleanly separated in `css/style.css`.
+  * **Internal CSS:** Embedded `<style>` in `<head>` showing cascading priority.
+  * **Inline CSS:** `style="..."` on specific elements to demonstrate priority (Inline > Internal/External > Browser Default).
+* **CSS Selectors Demonstrated:**
+  1. **Universal Selector (`*`):** Resetting box-sizing, margins, and paddings.
+  2. **Element Selector:** Styling `body`, `h1`, `h2`, `p`, `table`, `th`, `td`.
+  3. **ID Selector (`#id`):** `#main-header`, `#site-title`, `#navbar`, `#emergency-table`, `#registration-form`.
+  4. **Class Selector (`.class`):** `.container`, `.section-box`, `.badge`, `p.lead-text`, `p.alert-text`.
+  5. **Grouping Selector:** `h1, h2, h3, h4, h5, h6 { ... }` and `th, td { ... }`.
+  6. **Attribute Selector:** `input[type="text"]`, `a[target="_blank"]`, `input[type="submit"]`.
+  7. **Pseudo-Class Selector (`:hover`):** Navigation link hover (`.nav-link:hover`), button hover, and table row hover (`tr:hover`).
+  8. **Pseudo-Class Selector (`:first-child`):** `article p:first-child`.
+  9. **Pseudo-Element (`::before`):** `.protocol-item::before` (inserts checkmarks) and `p.urgent-notice::before` (inserts warning badge).
+* **Text & Font Properties:**
+  * `color`, `background-color`, `text-align: center | left | justify`.
+  * `text-transform: uppercase | capitalize`.
+  * `text-decoration`: Wavy underline (`text-decoration-style: wavy; text-decoration-color: red;`), strikethrough (`line-through`).
+  * Text Spacing: `letter-spacing`, `line-height`, `text-indent`.
+  * `text-shadow: 2px 2px 5px #000000;` on the main header.
+  * Font properties: `font-family` with serif/sans-serif fallbacks, `font-style: italic;`, `font-weight: 900;`, `font-variant: small-caps;`.
+* **Containers & Layout:**
+  * Block container `<div>` with padding, borders, and margins.
+  * Inline container `<span>` with `.highlight` for keyword highlighting without breaking sentence flow.
+
+---
+
+## 🚀 How to Run & Present in VS Code
+1. Open the project folder `HTML Project` in **Visual Studio Code**.
+2. Right-click **`index.html`** and select **"Open with Live Server"** (or double click to open in Chrome/Safari).
+3. Fill out the registration form and click **"Register Emergency Listing"** to navigate to `registered.html`.
+4. Point to the comments in `index.html` and `css/style.css` to explain any Unit 1, 2, or 3 topic to the professor.
