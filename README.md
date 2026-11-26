@@ -5,7 +5,7 @@
 > **Project Type:** Frontend Web Application (Client-Side)  
 > **🌐 Live GitHub Pages:** [https://shivansh26zx.github.io/community-emergency-directory/](https://shivansh26zx.github.io/community-emergency-directory/)  
 > **⚡ Live Vercel Demo:** [https://community-emergency-directory.vercel.app](https://community-emergency-directory.vercel.app)  
-> **🔐 Admin PIN:** `1234`
+> **🔐 Admin Security PIN:** `0326`
 
 ---
 
@@ -40,7 +40,7 @@ The project combines **interactive geographic mapping (Leaflet.js)** with **real
 
 ### 2. 🔐 Admin Management Portal (`admin.html`)
 - **Security PIN Authorization:** Restricted access screen requiring a 4-digit PIN.
-  - **Default Admin PIN:** `1234`
+  - **Admin Security PIN:** `0326` (Authorized personnel only)
   - Wrong PIN triggers a CSS keyframe shake animation and error feedback.
   - Session state maintained using `sessionStorage` with a manual *"Lock Portal"* button.
 - **Full CRUD Management:**
@@ -93,5 +93,5 @@ HTML Project/
 2. Double-click **`index.html`** to launch the Public Portal in any modern web browser (Chrome, Edge, Safari, Firefox).
 3. To access the Admin Dashboard, click **"Admin Dashboard"** in the navigation bar.
 4. When prompted by the Security Lock screen:
-   - **PIN:** `1234`
+   - **PIN:** `0326`
    - Click **Unlock Portal**.

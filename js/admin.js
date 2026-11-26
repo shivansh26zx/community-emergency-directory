@@ -3,11 +3,11 @@
    Course: CSE326 (Internet & Web Programming)
    ========================================================================== */
 
-// Configured default PIN for admin authorization
-const DEFAULT_PIN = "1234";
+// Configured security PIN for admin authorization
+const DEFAULT_PIN = "0326";
 
 function getStoredPin() {
-  return localStorage.getItem("adminSecurityPin") || DEFAULT_PIN;
+  return DEFAULT_PIN;
 }
 
 // Check session authentication status
